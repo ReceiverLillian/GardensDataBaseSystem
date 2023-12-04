@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page
-	import="com.rain.bean.AdminBean,com.rain.dao.AdminDao"%>
+<%--<%@ page--%>
+<%--	import="com.bean.AdminBean,com.dao.AdminDao"%>--%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN" class="ax-vertical-centered">
 <head>
@@ -28,12 +28,12 @@ body {
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
-	<%
-		AdminBean admin = new AdminBean();
-		String aid = (String) session.getAttribute("aid");
-		AdminDao admindao = new AdminDao();
-		admin = admindao.get_AidInfo2(aid);
-	%>
+<%--	<%--%>
+<%--		AdminBean admin = new AdminBean();--%>
+<%--		String aid = (String) session.getAttribute("aid");--%>
+<%--		AdminDao admindao = new AdminDao();--%>
+<%--		admin = admindao.get_AidInfo2(aid);--%>
+<%--	%>--%>
 	<nav
 		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
 		role="navigation">
@@ -45,8 +45,8 @@ body {
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="#" role="button"
 								class="dropdown-toggle" data-hover="dropdown"> <i
-									class="glyphicon glyphicon-user"></i> 欢迎您，<%out.write(admin.getUsername());%>
-	 									(<%=session.getAttribute("aid")%>)	</a>
+									class="glyphicon glyphicon-user"></i> 欢迎您，${user.user_name}
+								</a>
 							</li>
 						</ul>
 					</div>

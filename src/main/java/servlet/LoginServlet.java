@@ -2,7 +2,13 @@ package servlet;
 
 
 import bean.AdminBean;
+import bean.RoleBean;
+import bean.UserBean;
+import bean.User_roleBean;
 import dao.AdminDao;
+import dao.RoleDao;
+import dao.UserDao;
+import dao.User_roleDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,23 +44,24 @@ public class LoginServlet extends HttpServlet {
 		// ��ȡ�˺ź�����
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		AdminDao userdao = new AdminDao();
+
+		UserDao userDao = new UserDao();
 		// ���˺ź���������ж�
-		boolean result = userdao.Login_verify(username, password);
+		UserBean userBean = userDao.getUserByNamePass(username, password);
 		HttpSession session = request.getSession();
-			if (result) {
-				AdminBean adminbean = new AdminBean();
-				AdminDao admindao = new AdminDao();
+			if (userBean!=null) {
 
-				adminbean = admindao.getAdminInfo(username, password);
-
-				session.setAttribute("aid", "" + adminbean.getAid());
+				session.setAttribute("user", userBean);
+				User_roleDao userRoleDao =new User_roleDao();
+				User_roleBean userRoleBean = userRoleDao.getUser_roleByUser_id(userBean.getUser_id());
+				RoleDao roleDao = new RoleDao();
+				RoleBean roleBean = roleDao.getRoleById(userRoleBean.getRole_id());
 
 				session.setMaxInactiveInterval(6000);
-				if (adminbean.getStatus() == 1) {
-					response.sendRedirect("/GardensDataBaseSystem/staff_yanghu.jsp");
+				if (roleBean.getRole_name().equals("admin")) {
+					response.sendRedirect("/gardens/staff_yanghu.jsp");
 				}else{   //��⹤����Ա
-					response.sendRedirect("/GardensDataBaseSystem/staff_jiance.jsp");
+					response.sendRedirect("/gardens/staff_jiance.jsp");
 				}
 			} else {
 				session.setAttribute("state", "密码错误");
