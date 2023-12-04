@@ -10,7 +10,7 @@ public class ConnectDatabase {
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM test where id=101 ");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM test where id=102 ");
 
             while (rs.next()) {
                 int id = rs.getInt("id");
