@@ -1,6 +1,6 @@
 import java.sql.*;
 
-
+//更改一下
 public class ConnectDatabase {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/gardens";
