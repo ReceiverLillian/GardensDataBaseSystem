@@ -1,13 +1,11 @@
 package bean;
 
 public class AdminBean {
-	/**
-	 * 用户的数据表的bean
-	 */
+
 	private int aid;// id
-	private int status;// 用来判断是管理员还是读者，读者的值为1，管理员为2
-	private String username;// 账号
-	private String password;// 密码
+	private int status;
+	private String username;
+	private String password;
 
 
 	public int getAid() {

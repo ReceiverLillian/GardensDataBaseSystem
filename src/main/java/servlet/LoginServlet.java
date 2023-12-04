@@ -35,34 +35,32 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		// »ñÈ¡ÕËºÅºÍÃÜÂë
+		// ï¿½ï¿½È¡ï¿½ËºÅºï¿½ï¿½ï¿½ï¿½ï¿½
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		AdminDao userdao = new AdminDao();
-		// ¶ÔÕËºÅºÍÃÜÂë½øĞĞÅĞ¶Ï
+		// ï¿½ï¿½ï¿½ËºÅºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½
 		boolean result = userdao.Login_verify(username, password);
 		HttpSession session = request.getSession();
 			if (result) {
 				AdminBean adminbean = new AdminBean();
 				AdminDao admindao = new AdminDao();
-				// ¸üĞÂÕËºÅºÍÃÜÂë²éÕÒ³ö¶ÁÕßµÄĞÅÏ¢
+
 				adminbean = admindao.getAdminInfo(username, password);
-				// ½«aid´æÈësessionÖĞ
+
 				session.setAttribute("aid", "" + adminbean.getAid());
-				// ÉèÖÃsessionµÄÊ§Ğ§Ê±¼ä
+
 				session.setMaxInactiveInterval(6000);
-				// ¸ù¾İstatusµÄÖµÀ´ÅĞ¶ÏÊÇ¹ÜÀíÔ±¹¤×÷ÈËÔ±£¬»¹ÊÇ¶ÁÕß£¬status=1Îª¶ÁÕß =2ÊÇ¹¤×÷ÈËÔ±
-				if (adminbean.getStatus() == 1) {  //Ñø»¤¹¤×÷ÈËÔ±
+				if (adminbean.getStatus() == 1) {
 					response.sendRedirect("/GardensDataBaseSystem/staff_yanghu.jsp");
-				}else{   //¼à²â¹¤×÷ÈËÔ±
+				}else{   //ï¿½ï¿½â¹¤ï¿½ï¿½ï¿½ï¿½Ô±
 					response.sendRedirect("/GardensDataBaseSystem/staff_jiance.jsp");
 				}
 			} else {
-				// Ã»ÓĞÕÒµ½¶ÔÓ¦µÄÕËºÅºÍÃÜÂë£¬·µ»ØÖØĞÂµÇÂ¼
-				session.setAttribute("state", "ÃÜÂë´íÎó");
+				session.setAttribute("state", "å¯†ç é”™è¯¯");
 				response.setContentType("text/html;charset=utf-8");
 				response.getWriter().print("<script language='javascript'>" +
-						"alert('ÓÃ»§Ãû»òÃÜÂëÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡');" +
+						"alert('ç”¨æˆ·åæˆ–å¯†ç æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼');" +
 						"window.location.href='login.jsp';</script>')");
 //				response.sendRedirect("/books/login.jsp");
 			}

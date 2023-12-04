@@ -3,9 +3,7 @@ package util;
 import java.sql.*;
 
 public class DBUtil {
-	/**
-	 * 连接mysql数据库的操作，用户名，密码，使用jdbc连接
-	 */
+
 	public static String username = "root";
 	public static String password = "sa";
 	public static String url = "jdbc:mysql://localhost:3306/books2?characterEncoding=utf-8";
