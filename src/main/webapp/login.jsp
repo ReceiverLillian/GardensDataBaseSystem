@@ -73,9 +73,11 @@
 							class="control-label" for="username" style="display: none;"></label>
 					</div>
 
-					<label class="control-label" for="password"></label><br> <input
-						type="submit" class="btn btn-lg btn-primary"
-						value="登&nbsp;&nbsp;&nbsp;&nbsp;录" />
+					<label class="control-label" for="password"></label><br>
+					<div class="form-group text-center">
+						<input type="submit" class="btn btn-lg btn-primary" value="登&nbsp;&nbsp;&nbsp;&nbsp;录" />
+					</div>
+
 				</form>
 			</div>
 		</div>
