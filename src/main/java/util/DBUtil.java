@@ -5,8 +5,8 @@ import java.sql.*;
 public class DBUtil {
 
 	public static String username = "root";
-	public static String password = "sa";
-	public static String url = "jdbc:mysql://localhost:3306/books2?characterEncoding=utf-8";
+	public static String password = "123456";
+	public static String url = "jdbc:mysql://localhost:3306/gardens?characterEncoding=utf-8";
 	
 	static{
 		try {
