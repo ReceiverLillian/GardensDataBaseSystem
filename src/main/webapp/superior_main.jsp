@@ -69,6 +69,14 @@ body {
 							class="glyphicon glyphicon-chevron-right"></i> 养护信息</a></li>
 					<li><a href="/gardens/superior_monitor.jsp"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测信息</a></li>
+					<li><a href="/gardens/conserve_mumber.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 养护人员</a></li>
+					<li><a href="/gardens/monitor_mumber.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 监测人员</a></li>
+					<li><a href="/gardens/superior_plant.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 植物信息</a></li>
+					<li><a href="/gardens/superior_type.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 类别信息</a></li>
 
 				</ul><br><br>
 
@@ -80,12 +88,12 @@ body {
 					<div class="col-md-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">手工录入</div>
+								<div class="text-muted bootstrap-admin-box-title">养护信息</div>
 							</div>
 							<div class="bootstrap-admin-panel-content">
 								<ul>
-									<li>监测人员可以在登录系统后，手工录入监测数据</li>
-                                    <li>手工录入监测数据只能单条录入</li>
+									<li>上级主管部门可以查看所有养护信息</li>
+                                    <li>依托该系统，可以实现养护信息、监测信息、植物分类信息、和基本信息的联合查询</li>
 								</ul>
 							</div>
 						</div>
@@ -93,19 +101,75 @@ body {
 					<div class="col-md-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">数据导入</div>
+								<div class="text-muted bootstrap-admin-box-title">监测信息</div>
 							</div>
 							<div class="bootstrap-admin-panel-content">
 								<ul>
-									<li>监测人员可以选择文件进行数据导入</li>
-									<li>数据导入方式可以进行批量导入</li>
-
+									<li>上级主管部门可以查看所有监测信息</li>
+									<li>依托该系统，可以实现养护信息、监测信息、植物分类信息、和基本信息的联合查询</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 
+				<div class="row">
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="text-muted bootstrap-admin-box-title">养护人员</div>
+							</div>
+							<div class="bootstrap-admin-panel-content">
+								<ul>
+									<li>上级主管部门可以查看养护人员信息</li>
+                                    <li>依托该系统，可以实现养护信息、监测信息、植物分类信息、和基本信息的联合查询</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="text-muted bootstrap-admin-box-title">监测人员</div>
+							</div>
+							<div class="bootstrap-admin-panel-content">
+								<ul>
+									<li>上级主管部门可以查看监测人员信息</li>
+									<li>依托该系统，可以实现养护信息、监测信息、植物分类信息、和基本信息的联合查询</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="text-muted bootstrap-admin-box-title">植物信息</div>
+							</div>
+							<div class="bootstrap-admin-panel-content">
+								<ul>
+									<li>上级主管部门可以查询植物植物</li>
+                                    <li>根据生长环境模糊查询、根据所属类别进行查询</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="text-muted bootstrap-admin-box-title">类别信息</div>
+							</div>
+							<div class="bootstrap-admin-panel-content">
+								<ul>
+									<li>上级主管部门可以查看类别信息</li>
+									<li>不同属性、属性组合查询下属</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
