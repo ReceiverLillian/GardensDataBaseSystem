@@ -9,8 +9,5 @@
         <module name="GardensDataBaseSystem" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="GardensDataBaseSystem" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
