@@ -25,8 +25,6 @@ public class UserDao {
                 userBean = new UserBean();
                 userBean.setUser_id(rs.getInt("user_id"));
                 userBean.setUser_name(rs.getString("user_name"));
-                userBean.setPassword("password");
-                userBean.setUser_state("user_state");
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
