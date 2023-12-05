@@ -59,9 +59,16 @@ public class LoginServlet extends HttpServlet {
 
 				session.setMaxInactiveInterval(6000);
 				if (roleBean.getRole_name().equals("admin")) {
+
+				}
+				else if(roleBean.getRole_name().equals("monitor")){
 					response.sendRedirect("/gardens/monitor_main.jsp");
-				}else{   //��⹤����Ա
-					response.sendRedirect("/gardens/converse_main.jsp");
+				}
+				else if(roleBean.getRole_name().equals("conserve")){
+					response.sendRedirect("/gardens/conserve_main.jsp");
+				}
+				else if(roleBean.getRole_name().equals("superior")){
+
 				}
 			} else {
 				session.setAttribute("state", "密码错误");
