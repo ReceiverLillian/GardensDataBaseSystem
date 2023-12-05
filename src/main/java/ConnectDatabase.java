@@ -1,6 +1,6 @@
 import java.sql.*;
 
-
+//更改一下
 public class ConnectDatabase {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/gardens";
@@ -10,7 +10,7 @@ public class ConnectDatabase {
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM test");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM test where id=102 ");
 
             while (rs.next()) {
                 int id = rs.getInt("id");
