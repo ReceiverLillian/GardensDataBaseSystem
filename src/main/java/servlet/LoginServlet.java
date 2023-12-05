@@ -59,9 +59,9 @@ public class LoginServlet extends HttpServlet {
 
 				session.setMaxInactiveInterval(6000);
 				if (roleBean.getRole_name().equals("admin")) {
-					response.sendRedirect("/gardens/staff_yanghu.jsp");
+					response.sendRedirect("/gardens/monitor_main.jsp");
 				}else{   //��⹤����Ա
-					response.sendRedirect("/gardens/staff_jiance.jsp");
+					response.sendRedirect("/gardens/converse_main.jsp");
 				}
 			} else {
 				session.setAttribute("state", "密码错误");
@@ -69,7 +69,6 @@ public class LoginServlet extends HttpServlet {
 				response.getWriter().print("<script language='javascript'>" +
 						"alert('用户名或密码有误，请重新输入！');" +
 						"window.location.href='login.jsp';</script>')");
-//				response.sendRedirect("/books/login.jsp");
 			}
 	}
 
