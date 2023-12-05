@@ -41,7 +41,7 @@ body {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="collapse navbar-collapse main-navbar-collapse">
-						<a class="navbar-brand" href="staff_jiance.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
+						<a class="navbar-brand" href="converse_main.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="#" role="button"
 								class="dropdown-toggle" data-hover="dropdown"> <i
