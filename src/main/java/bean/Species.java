@@ -28,14 +28,14 @@ public class Species {
     }
 
     public int getSpeciesId() {
-        //return speciesId;
-        return 12;
+        return speciesId;
+        //return 12;
     }
 
     public String getSpeciesName() {
         System.out.println("当前通过getSpeciesName()获得的植物名为"+speciesName);
-        return "植物名测试用";
-        //return speciesName;
+        //return "植物名测试用";
+        return speciesName;
     }
 
     public String getSpeciesOtherName() {
@@ -76,8 +76,8 @@ public class Species {
 
     @Override
     public String toString() {
-        return "test用。";
-        /*return "Species{" +
+        //return "test用。";
+        return "Species{" +
                 "speciesId=" + speciesId +
                 ", speciesName='" + speciesName + '\'' +
                 ", speciesOtherName='" + speciesOtherName + '\'' +
@@ -89,6 +89,6 @@ public class Species {
                 ", pictureDescri='" + pictureDescri + '\'' +
                 ", picturePlace='" + picturePlace + '\'' +
                 ", photoedBy='" + photoedBy + '\'' +
-                '}';*/
+                '}';
     }
 }

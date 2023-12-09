@@ -24,6 +24,9 @@ body {
 	background-image: url("05.jpg");
 }
 	 /* 表格样式 */
+table {
+	background-color: white;
+}
  .table-container {
 	 margin-top: 20px;
 	 width: 100%;
@@ -105,32 +108,23 @@ body {
 			</tr>
 			</thead>
 			<tbody>
-			<% List<Species> speciesList = (List<Species>) request.getAttribute("speciesList");
-				if (speciesList != null) {
-					System.out.println("species表不为空。");
-					/*for (Species species:speciesList)
-						System.out.println("testaaaa");*/
-					for (Species species : speciesList) { %>
-			<tr>
-				<td><%= species.getSpeciesId() %></td>
-
-				<td><%= species.getSpeciesName() %></td>
-				<td><%= species.getSpeciesOtherName() %></td>
-				<td><%= species.getFamilyName() %></td>
-				<td><%= species.getGenusName() %></td>
-				<td><%= species.getSpeciesMorph() %></td>
-				<td><%= species.getSpeciesTech() %></td>
-				<td><%= species.getSpeciesAppl() %></td>
-				<td><%= species.getPictureDescri() %></td>
-				<td><%= species.getPicturePlace() %></td>
-				<td><%= species.getPhotoedBy() %></td>
-			</tr>
-			<%     }
-			} else { %>
-			<tr>
-				<td colspan="11">暂无物种数据。</td>
-			</tr>
-			<% } %>
+			<tbody> <% List<Species> speciesList = (List<Species>) request.getAttribute("speciesList");
+						if (speciesList != null) { System.out.println("species表不为空。");
+							for (Species species : speciesList)
+							{ %> <tr> 	<td><%= species.getSpeciesId() %></td>
+									  	<td><%= species.getSpeciesName() %></td>
+										<td><%= species.getSpeciesOtherName() %></td>
+										<td><%= species.getFamilyName() %></td>
+										<td><%= species.getGenusName() %></td>
+										<td><%= species.getSpeciesMorph() %></td>
+										<td><%= species.getSpeciesTech() %></td>
+										<td><%= species.getSpeciesAppl() %></td>
+										<td><%= species.getPictureDescri() %></td>
+										<td><%= species.getPicturePlace() %></td>
+										<td><%= species.getPhotoedBy() %></td>
+										</tr> <% }
+						}
+						else { %> <tr> <td colspan="11">暂无物种数据。</td> </tr> <% } %> </tbody>
 			</tbody>
 		</table>
 	</div>
