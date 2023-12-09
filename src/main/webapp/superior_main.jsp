@@ -28,12 +28,6 @@ body {
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
-<%--	<%--%>
-<%--		AdminBean admin = new AdminBean();--%>
-<%--		String aid = (String) session.getAttribute("aid");--%>
-<%--		AdminDao admindao = new AdminDao();--%>
-<%--		admin = admindao.get_AidInfo2(aid);--%>
-<%--	%>--%>
 	<nav
 		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
 		role="navigation">
@@ -41,15 +35,14 @@ body {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="collapse navbar-collapse main-navbar-collapse">
-						<a class="navbar-brand" href="converse_main.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
+						<a class="navbar-brand" href="superior_main.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="#" role="button"
 								class="dropdown-toggle" data-hover="dropdown"> <i
-									class="glyphicon glyphicon-user"></i> 欢迎您，<%out.write(admin.getUsername());%>
-	 									(<%=session.getAttribute("aid")%>)
-                                                    <i class="caret"></i></a>
+									class="glyphicon glyphicon-user"></i> 欢迎您，${user.user_name}
+									 <i class="caret"></i>
 								<ul class="dropdown-menu">
-									<li><a href="/gardens/superior_main.jsp">退出</a></li>
+									<li><a href="/gardens/login.jsp">退出</a></li>
 								</ul>
 							</li>
 						</ul>
