@@ -41,12 +41,15 @@ body {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="collapse navbar-collapse main-navbar-collapse">
-						<a class="navbar-brand" href="staff.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
+						<a class="navbar-brand" href="admin_main.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="#" role="button"
-								class="dropdown-toggle" data-hover="dropdown"> <i
+													class="dropdown-toggle" data-hover="dropdown"> <i
 									class="glyphicon glyphicon-user"></i> 欢迎您，${user.user_name}
-								</a>
+								<i class="caret"></i>
+								<ul class="dropdown-menu">
+									<li><a href="/gardens/staff_jiance.jsp">退出</a></li>
+								</ul>
 							</li>
 						</ul>
 					</div>
@@ -61,10 +64,10 @@ body {
 			<!-- left, vertical navbar -->
 			<div class="col-md-2 bootstrap-admin-col-left">
 				<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-					<li><a href="/gardens/yanghu_require.jsp"><i
-							class="glyphicon glyphicon-chevron-right"></i> 养护要求</a></li>
-					<li><a href="/gardens/yanghu_do.jsp"><i
-							class="glyphicon glyphicon-chevron-right"></i> 定期养护</a></li>
+					<li><a href="/gardens/basicMessageManagement"><i
+							class="glyphicon glyphicon-chevron-right"></i> 植物基本信息管理</a></li>
+					<li><a href="/gardens/sortManagement.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 植物分类管理</a></li>
 
 				</ul><br><br>
 
