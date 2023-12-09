@@ -35,7 +35,7 @@ body {
 <%--		admin = admindao.get_AidInfo2(aid);--%>
 <%--	%>--%>
 	<nav
-		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
+		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small "
 		role="navigation">
 		<div class="container">
 			<div class="row">
