@@ -1,37 +1,39 @@
 package dao;
 
-import bean.UserBean;
+
+import bean.QuotaBean;
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-public class UserDao {
 
-    public UserBean getUserByNamePass(String username, String password){
-        // TODO Auto-generated method stub
-        UserBean userBean = null;
+public class QuotaDao {
+    public QuotaBean selectQuotaById(int id){
         Connection conn = DBUtil.getConnectDb();
-        String sql = "select * from user where user_name= '"+username+"' and password= '"+password+"'";
-
+        String sql = "select * from quota where quo_id = ?";
         PreparedStatement stm = null;
         ResultSet rs = null;
+        QuotaBean quotaBean = new QuotaBean();
+
         try {
             stm = conn.prepareStatement(sql);
+            stm.setInt(1, id);
             rs = stm.executeQuery();
-            if (rs.next()) {
-                userBean = new UserBean();
-                userBean.setUser_id(rs.getInt("user_id"));
-                userBean.setUser_name(rs.getString("user_name"));
+            while (rs.next()) {
+                quotaBean.setQuo_id(rs.getInt("quo_id"));
+                quotaBean.setQuo_name(rs.getString("quo_name"));
+                quotaBean.setQuo_value(rs.getFloat("quo_value"));
             }
+
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             DBUtil.CloseDB(rs, stm, conn);
         }
-        return userBean;
+
+        return quotaBean;
     }
 }

@@ -8,6 +8,7 @@
 <title>园林植物综合管理平台</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="static/css/bootstrap.min.css">
 <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
@@ -21,6 +22,17 @@
 body {
 	background-image: url("05.jpg");
 }
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link,
+.navbar-custom .navbar-nav .nav-link .glyphicon,
+.navbar-custom .navbar-nav .nav-link:hover,
+.navbar-custom .navbar-nav .nav-link:focus {
+	color: white !important; /* 使用 !important 来确保覆盖其他样式 */
+}
+/* 额外添加针对欢迎语的样式 */
+.navbar-custom .navbar-nav .dropdown a {
+	color: white !important;
+}
 </style>
 </head>
 
@@ -28,24 +40,18 @@ body {
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
-<%--	<%--%>
-<%--		AdminBean admin = new AdminBean();--%>
-<%--		String aid = (String) session.getAttribute("aid");--%>
-<%--		AdminDao admindao = new AdminDao();--%>
-<%--		admin = admindao.get_AidInfo2(aid);--%>
-<%--	%>--%>
 	<nav
-		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
+		class="navbar navbar-light bg-primary navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small  navbar-custom"
 		role="navigation">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="collapse navbar-collapse main-navbar-collapse">
-						<a class="navbar-brand" href="staff.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
+						<a class="navbar-brand" href="/gardens/login.jsp"><strong>园林植物监测管理</strong></a>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown"><a href="#" role="button"
+							<li class="dropdown  text-white"><a href="#" role="button"
 								class="dropdown-toggle" data-hover="dropdown"> <i
-									class="glyphicon glyphicon-user"></i> 欢迎您，${user.user_name}
+									class="glyphicon glyphicon-user "></i> 欢迎您，${user.user_name}
 								</a>
 							</li>
 						</ul>
@@ -61,47 +67,50 @@ body {
 			<!-- left, vertical navbar -->
 			<div class="col-md-2 bootstrap-admin-col-left">
 				<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-					<li><a href="/gardens/yanghu_require.jsp"><i
-							class="glyphicon glyphicon-chevron-right"></i> 养护要求</a></li>
-					<li><a href="/gardens/yanghu_do.jsp"><i
-							class="glyphicon glyphicon-chevron-right"></i> 定期养护</a></li>
-
+					<li><a href="/gardens/monitorAllPlants"><i
+							class="glyphicon glyphicon-chevron-right"></i> 监测管理</a></li>
+					<li><a href="/gardens/monitor_add_plant.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 增加监测</a></li>
+					<li><a href="/gardens/monitor_quota.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 指标管理</a></li>
+					<li><a href="/gardens/monitor_quota_error.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 异常指标</a></li>
 				</ul><br><br>
 
 			</div>
 
 			<!-- content -->
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">养护要求</div>
-							</div>
-							<div class="bootstrap-admin-panel-content">
-								<ul>
-									<li>养护人员可以在登录系统后，查询养护要求；</li>
+<%--			<div class="col-md-10">--%>
+<%--				<div class="row">--%>
+<%--					<div class="col-md-6">--%>
+<%--						<div class="panel panel-default">--%>
+<%--							<div class="panel-heading">--%>
+<%--								<div class="text-muted bootstrap-admin-box-title">养护要求</div>--%>
+<%--							</div>--%>
+<%--							<div class="bootstrap-admin-panel-content">--%>
+<%--								<ul>--%>
+<%--									<li>养护人员可以在登录系统后，查询养护要求；</li>--%>
 
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">进行养护</div>
-							</div>
-							<div class="bootstrap-admin-panel-content">
-								<ul>
-									<li>养护人员根据养护要求对园林植物进行定期养护</li>
+<%--								</ul>--%>
+<%--							</div>--%>
+<%--						</div>--%>
+<%--					</div>--%>
+<%--					<div class="col-md-6">--%>
+<%--						<div class="panel panel-default">--%>
+<%--							<div class="panel-heading">--%>
+<%--								<div class="text-muted bootstrap-admin-box-title">进行养护</div>--%>
+<%--							</div>--%>
+<%--							<div class="bootstrap-admin-panel-content">--%>
+<%--								<ul>--%>
+<%--									<li>养护人员根据养护要求对园林植物进行定期养护</li>--%>
 
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+<%--								</ul>--%>
+<%--							</div>--%>
+<%--						</div>--%>
+<%--					</div>--%>
+<%--				</div>--%>
 
-			</div>
+<%--			</div>--%>
 		</div>
 	</div>
 
