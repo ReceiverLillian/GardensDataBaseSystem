@@ -1,6 +1,6 @@
 package bean;
 
-public class Converse_speciesBean {  //养护对象
+public class Conserve_speciesBean {  //养护对象
     int con_id;
     int species_id;
 

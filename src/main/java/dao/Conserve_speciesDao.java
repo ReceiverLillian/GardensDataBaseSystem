@@ -1,6 +1,6 @@
 package dao;
 
-import bean.Converse_speciesBean;
+import bean.Conserve_speciesBean;
 import util.DBUtil;
 
 import java.sql.Connection;
@@ -8,12 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Converse_speciesDao {
+public class Conserve_speciesDao {
 
-    public int getSpeciesByCon_id(int con_id){
-        Converse_speciesBean converse_speciesBeanBean = new Converse_speciesBean();
+    public  Conserve_speciesBean getSpeciesByCon_id(int con_id){
+        Conserve_speciesBean converse_speciesBeanBean = new Conserve_speciesBean();
         Connection conn = DBUtil.getConnectDb();
-        String sql = "select * from converse_species where con_id ='"+con_id+"'";
+        String sql = "select * from conserve_species where con_id ='"+con_id+"'";
 
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -31,6 +31,6 @@ public class Converse_speciesDao {
         } finally {
             DBUtil.CloseDB(rs, stm, conn);
         }
-        return converse_speciesBeanBean.getSpecies_id();
+        return converse_speciesBeanBean;
     }
 }
