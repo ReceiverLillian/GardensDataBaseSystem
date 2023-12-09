@@ -1,30 +1,29 @@
 package dao;
 
-import bean.UserBean;
+import bean.Conserve_speciesBean;
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-public class UserDao {
 
-    public UserBean getUserByNamePass(String username, String password){
-        // TODO Auto-generated method stub
-        UserBean userBean = null;
+public class Conserve_speciesDao {
+
+    public  Conserve_speciesBean getSpeciesByCon_id(int con_id){
+        Conserve_speciesBean converse_speciesBeanBean = new Conserve_speciesBean();
         Connection conn = DBUtil.getConnectDb();
-        String sql = "select * from user where user_name= '"+username+"' and password= '"+password+"'";
+        String sql = "select * from conserve_species where con_id ='"+con_id+"'";
 
         PreparedStatement stm = null;
         ResultSet rs = null;
+
         try {
             stm = conn.prepareStatement(sql);
             rs = stm.executeQuery();
             if (rs.next()) {
-                userBean = new UserBean();
-                userBean.setUser_id(rs.getInt("user_id"));
-                userBean.setUser_name(rs.getString("user_name"));
+                converse_speciesBeanBean.setCon_id(rs.getInt("con_id"));
+                converse_speciesBeanBean.setSpecies_id(rs.getInt("species_id"));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -32,6 +31,6 @@ public class UserDao {
         } finally {
             DBUtil.CloseDB(rs, stm, conn);
         }
-        return userBean;
+        return converse_speciesBeanBean;
     }
 }
