@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 
 				session.setMaxInactiveInterval(6000);
 				if (roleBean.getRole_name().equals("admin")) {
-
+					response.sendRedirect("/gardens/admin_main.jsp");
 				}
 				else if(roleBean.getRole_name().equals("monitor")){
 					response.sendRedirect("/gardens/monitor_main.jsp");
@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("/gardens/conserve_main.jsp");
 				}
 				else if(roleBean.getRole_name().equals("superior")){
-
+					response.sendRedirect("/gardens/superior_main.jsp");
 				}
 			} else {
 				session.setAttribute("state", "密码错误");
