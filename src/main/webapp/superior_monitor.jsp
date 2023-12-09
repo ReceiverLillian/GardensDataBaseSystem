@@ -80,7 +80,7 @@
         					<div class="col-lg-12">
         						<div class="panel panel-default bootstrap-admin-no-table-panel">
         							<div class="panel-heading">
-        								<div class="text-muted bootstrap-admin-box-title">养护信息</div>
+        								<div class="text-muted bootstrap-admin-box-title">监测信息</div>
         							</div>
         						</div>
         					</div>
@@ -92,34 +92,37 @@
         							cellspacing="0" width="100%">
         							<thead>
         								<tr>
-        									<th>养护编号</th>
-        									<th>养护名称</th>
-        									<th>养护对象</th>
-        									<th>养护人</th>
-                                            <th>养护地点</th>
-                                             <th>养护时间</th>
+        									<th>监测编号</th>
+        									<th>监测时间</th>
+        									<th>监测对象</th>
+        									<th>监测设备</th>
+                                            <th>监测地点</th>
+                                             <th>监测指标</th>
                                              <th>操作</th>
         								</tr>
         							</thead>
 
 							<%
-								ArrayList<ConserveBean> allconserve=(ArrayList<ConserveBean>)request.getSession().getAttribute("allconserve");
+								ArrayList<MonitorBean> monitorBeans=(ArrayList<MonitorBean>)request.getSession().getAttribute("monitorBeans");
                                 ArrayList<SpeciesBean> speciesBeans =(ArrayList<SpeciesBean>)request.getSession().getAttribute("speciesBeans");
+								ArrayList<QuotaBean> quotaBeans=(ArrayList<QuotaBean>)request.getSession().getAttribute("quotaBeans");
+                                ArrayList<DeviceBean> deviceBeans =(ArrayList<DeviceBean>)request.getSession().getAttribute("deviceBeans");
+
 								int i=0;
-								for (ConserveBean bean : allconserve) {
+								for (MonitorBean bean : monitorBeans) {
 
 							%>
 							<tbody>
-                                <td><%=bean.getCon_id()%></td>
-								<td><%=bean.getCon_name()%></td>
+                                <td><%=bean.getMon_id()%></td>
+								<td><%=bean.getMon_time()%></td>
 								<td><%=speciesBeans.get(i).getSpecies_name()%></td>
-								<td><%=bean.getConby()%></td>
-								<td><%=bean.getCon_place()%></td>
-								<td><%=bean.getCon_ctime()%></td>
+								<td><%=deviceBeans.get(i).getDev_name() %></td>
+								<td><%=bean.getMon_place()%></td>
+								<td><%=quotaBeans.get(i).getQuo_name()%></td>
 
 								<td>
 								<button type="button" class="btn btn-warning btn-xs"
-                                   onclick="javascrtpt:window.location.href='Superior_ConserveDetailedServlet?con_id=<%=bean.getCon_id()%>'">详情</button></td>
+                                   onclick="javascrtpt:window.location.href='Superior_MonitorDetailedServlet?mon_id=<%=bean.getMon_id()%>&dev_id=<%=deviceBeans.get(i).getDev_id()%>&species_id=<%=speciesBeans.get(i).getSpecies_id()%>&quo_id=<%=quotaBeans.get(i).getQuo_id()%>'">详情</button></td>
 							</tbody>
 							<%
 							i++;
