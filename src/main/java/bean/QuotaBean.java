@@ -1,9 +1,12 @@
 package bean;
 
+import java.util.Date;
+
 public class QuotaBean {
     int quo_id;
     String quo_name;
     float quo_value;
+    Date quo_time;
 
     public int getQuo_id() {
         return quo_id;
@@ -27,5 +30,13 @@ public class QuotaBean {
 
     public void setQuo_value(float quo_value) {
         this.quo_value = quo_value;
+    }
+
+    public Date getQuo_time() {
+        return quo_time;
+    }
+
+    public void setQuo_time(Date quo_time) {
+        this.quo_time = quo_time;
     }
 }
