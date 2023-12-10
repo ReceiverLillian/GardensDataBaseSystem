@@ -13,6 +13,7 @@ public class Species {
     private String picturePlace;
     private String photoedBy;
 
+    public Species(){}
     public Species(int speciesId, String speciesName, String speciesOtherName, String familyName, String genusName, String speciesMorph, String speciesTech, String speciesAppl, String pictureDescri, String picturedPlace, String photoedBy) {
         this.speciesId = speciesId;
         this.speciesName = speciesName;
@@ -24,6 +25,51 @@ public class Species {
         this.speciesAppl = speciesAppl;
         this.pictureDescri = pictureDescri;
         this.picturePlace = picturedPlace;
+        this.photoedBy = photoedBy;
+    }
+
+    public void setSpeciesId(int speciesId) {
+        this.speciesId = speciesId;
+    }
+
+    public void setSpeciesName(String speciesName) {
+        this.speciesName = speciesName;
+    }
+
+
+    public void setSpeciesOtherName(String speciesOtherName) {
+        this.speciesOtherName = speciesOtherName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public void setGenusName(String genusName) {
+        this.genusName = genusName;
+    }
+
+    public void setSpeciesMorph(String speciesMorph) {
+        this.speciesMorph = speciesMorph;
+    }
+
+    public void setSpeciesTech(String speciesTech) {
+        this.speciesTech = speciesTech;
+    }
+
+    public void setSpeciesAppl(String speciesAppl) {
+        this.speciesAppl = speciesAppl;
+    }
+
+    public void setPictureDescri(String pictureDescri) {
+        this.pictureDescri = pictureDescri;
+    }
+
+    public void setPicturePlace(String picturePlace) {
+        this.picturePlace = picturePlace;
+    }
+
+    public void setPhotoedBy(String photoedBy) {
         this.photoedBy = photoedBy;
     }
 

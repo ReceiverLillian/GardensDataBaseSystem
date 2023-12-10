@@ -223,12 +223,6 @@ table {
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
-<%--	<%--%>
-<%--		AdminBean admin = new AdminBean();--%>
-<%--		String aid = (String) session.getAttribute("aid");--%>
-<%--		AdminDao admindao = new AdminDao();--%>
-<%--		admin = admindao.get_AidInfo2(aid);--%>
-<%--	%>--%>
 <nav
 		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
 		role="navigation">
@@ -268,33 +262,43 @@ table {
 			<th>操作</th>
 		</tr>
 		</thead>
-		<tbody>
-		<tbody> <% List<Species> speciesList = (List<Species>) request.getAttribute("speciesList");
-			if (speciesList != null) { System.out.println("species表不为空。");
-				for (Species species : speciesList) { %> <tr> <td><%= species.getSpeciesId() %></td>
-			<td><%= species.getSpeciesName() %></td>
-			<td><%= species.getSpeciesOtherName() %></td>
-			<td><%= species.getFamilyName() %></td>
-			<td><%= species.getGenusName() %></td>
-			<td><%= species.getSpeciesMorph() %></td>
-			<td><%= species.getSpeciesTech() %></td>
-			<td><%= species.getSpeciesAppl() %></td>
-			<td>
-				<button class="btn btn-primary" data-toggle="collapse" data-target="#details<%= species.getSpeciesId() %>">详情</button>
-				<div id="details<%= species.getSpeciesId() %>" class="collapse">
-					<p><strong>配图描述:</strong> <%= species.getPictureDescri() %></p>
-					<p><strong>配图拍摄地点:</strong> <%= species.getPicturePlace() %></p>
-					<p><strong>配图拍摄人:</strong> <%= species.getPhotoedBy() %></p>
-				</div>
-			</td>
-			<td>
-				<button class="btn btn-primary">修改</button> <!-- 修改按钮 -->
-				<button class="btn btn-danger" onclick="deleteSpecies(<%= species.getSpeciesId() %>)">删除</button> <!-- 删除按钮 -->
-			</td>
-		</tr> <% }
-		}
-		else { %> <tr> <td colspan="9">暂无物种数据。</td> </tr> <% } %> </tbody>
-		</tbody>
+
+
+		<form action="modify_species.jsp" method="post">
+			<!-- 其他表单字段 -->
+			<tbody>
+			<% List<Species> speciesList = (List<Species>) request.getAttribute("speciesList");
+				if (speciesList != null) { System.out.println("species表不为空。");
+					for (Species species : speciesList) { %> <tr> <td><%= species.getSpeciesId() %></td>
+				<td><%= species.getSpeciesName() %></td>
+				<td><%= species.getSpeciesOtherName() %></td>
+				<td><%= species.getFamilyName() %></td>
+				<td><%= species.getGenusName() %></td>
+				<td><%= species.getSpeciesMorph() %></td>
+				<td><%= species.getSpeciesTech() %></td>
+				<td><%= species.getSpeciesAppl() %></td>
+				<td>
+					<!-- 详情按钮和内容 -->
+					<div>
+						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#details<%= species.getSpeciesId() %>">详情</button>
+					</div>
+					<div id="details<%= species.getSpeciesId() %>" class="collapse">
+						<p><strong>配图描述:</strong> <%= species.getPictureDescri() %></p>
+						<p><strong>配图拍摄地点:</strong> <%= species.getPicturePlace() %></p>
+						<p><strong>配图拍摄人:</strong> <%= species.getPhotoedBy() %></p>
+					</div>
+				</td>
+				<td>
+					<input type="hidden" name="speciesId" value="<%= species.getSpeciesId() %>" />
+					<button type="submit" class="btn btn-primary" >修改</button>
+					<button class="btn btn-danger" onclick="deleteSpecies(<%= species.getSpeciesId() %>)">删除</button> <!-- 删除按钮 -->
+				</td>
+			</tr> <% }
+			}
+			else { %> <tr> <td colspan="9">暂无物种数据。</td> </tr> <% } %>
+			</tbody>
+		</form>
+
 	</table>
 </div>
 </body>
