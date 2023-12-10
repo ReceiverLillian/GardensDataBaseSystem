@@ -264,12 +264,16 @@ table {
 		</thead>
 
 
-		<form action="modify_species.jsp" method="post">
-			<!-- 其他表单字段 -->
-			<tbody>
-			<% List<Species> speciesList = (List<Species>) request.getAttribute("speciesList");
-				if (speciesList != null) { System.out.println("species表不为空。");
-					for (Species species : speciesList) { %> <tr> <td><%= species.getSpeciesId() %></td>
+		<tbody>
+		<%
+			List<Species> speciesList = (List<Species>) request.getAttribute("speciesList");
+			if (speciesList != null) {
+				System.out.println("species表不为空。");
+				for (Species species : speciesList) {
+		%>
+		<tr>
+			<form action="modify_species.jsp" method="post">
+				<td><%= species.getSpeciesId() %></td>
 				<td><%= species.getSpeciesName() %></td>
 				<td><%= species.getSpeciesOtherName() %></td>
 				<td><%= species.getFamilyName() %></td>
@@ -290,14 +294,23 @@ table {
 				</td>
 				<td>
 					<input type="hidden" name="speciesId" value="<%= species.getSpeciesId() %>" />
-					<button type="submit" class="btn btn-primary" >修改</button>
-					<button class="btn btn-danger" onclick="deleteSpecies(<%= species.getSpeciesId() %>)">删除</button> <!-- 删除按钮 -->
+					<button type="submit" class="btn btn-primary">修改</button>
+					<button class="btn btn-danger" onclick="deleteSpecies(<%= species.getSpeciesId() %>)">删除</button>
+					<!-- 删除按钮 -->
 				</td>
-			</tr> <% }
+			</form>
+		</tr>
+		<%
 			}
-			else { %> <tr> <td colspan="9">暂无物种数据。</td> </tr> <% } %>
-			</tbody>
-		</form>
+		} else {
+		%>
+		<tr>
+			<td colspan="9">暂无物种数据。</td>
+		</tr>
+		<%
+			}
+		%>
+		</tbody>
 
 	</table>
 </div>

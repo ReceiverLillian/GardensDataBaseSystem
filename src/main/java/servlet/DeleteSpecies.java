@@ -12,6 +12,7 @@ import java.sql.*;
 public class DeleteSpecies extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         int speciesId = Integer.parseInt(request.getParameter("speciesId"));
         System.out.println("*****" + speciesId + "*******");
 

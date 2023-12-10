@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BasicMessageManagementServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         System.out.println("已经进入BasicMessageManagementServlet的处理流程中。");
         List<Species> speciesList = retrievePlantData(); // 从数据库查询植物基本信息列表
         request.setAttribute("speciesList", speciesList); // 将查询结果传递到JSP页面

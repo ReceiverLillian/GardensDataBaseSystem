@@ -117,7 +117,7 @@
 	Species species = sd.selectPlantById(Integer.parseInt(request.getParameter("speciesId")));
 %>
 	<%--<%= Integer.parseInt(request.getParameter("speciesId"))%>--%>
-<form action="/UpdateSpecies" method="post" class="container">
+<form action="UpdateSpecies" method="post" class="container">
 	<div class="row">
 		<div class="col-md-4">
 			<div class="form-group">
@@ -144,15 +144,15 @@
 		<div class="col-md-12">
 			<div class="form-group">
 				<label for="morphology" style="color: white;">形态特征:</label>
-				<textarea class="form-control" id="morphology" name="morphology" style="color: white;"><%= species.getSpeciesMorph() %></textarea>
+				<textarea class="form-control" id="morphology" name="morphology" ><%= species.getSpeciesMorph() %></textarea>
 			</div>
 			<div class="form-group">
 				<label for="cultivation" style="color: white;">栽培技术:</label>
-				<textarea class="form-control" id="cultivation" name="cultivation" style="color: white;"><%= species.getSpeciesTech() %></textarea>
+				<textarea class="form-control" id="cultivation" name="cultivation" ><%= species.getSpeciesTech() %></textarea>
 			</div>
 			<div class="form-group">
 				<label for="application" style="color: white;">应用价值:</label>
-				<textarea class="form-control" id="application" name="application" style="color: white;"><%= species.getSpeciesAppl() %></textarea>
+				<textarea class="form-control" id="application" name="application" ><%= species.getSpeciesAppl() %></textarea>
 			</div>
 		</div>
 	</div>
