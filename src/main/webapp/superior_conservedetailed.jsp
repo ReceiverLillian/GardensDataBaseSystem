@@ -80,62 +80,60 @@
         					<div class="col-lg-12">
         						<div class="panel panel-default bootstrap-admin-no-table-panel">
         							<div class="panel-heading">
-        								<div class="text-muted bootstrap-admin-box-title">养护信息</div>
-        							</div>
-        						</div>
-        					</div>
-        				</div>
+        								<div  class="text-muted bootstrap-admin-box-title">养护信息详情</div>
 
         				<div class="row">
         					<div class="col-lg-12">
         						<table id="data_list" class="table table-hover table-bordered"
         							cellspacing="0" width="100%">
-        							<thead>
-        								<tr>
-        									<th>养护编号</th>
-        									<th>养护名称</th>
-        									<th>养护对象</th>
-        									<th>养护人</th>
-                                            <th>养护地点</th>
-                                             <th>养护时间</th>
-                                             <th>操作</th>
-        								</tr>
-        							</thead>
+                            <div class="form-group">
+                                <label>养护编号</label>
+                                <input type="text" class="form-control" value="${targetconserve.con_id}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>养护名称</label>
+                                <input type="text" class="form-control" value="${targetconserve.con_name}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>养护对象</label>
+                                <input type="text" class="form-control" value="${targetspecies.species_name}" readonly>
+                            </div>
 
-							<%
-								ArrayList<ConserveBean> allconserve=(ArrayList<ConserveBean>)request.getSession().getAttribute("allconserve");
-                                ArrayList<SpeciesBean> speciesBeans =(ArrayList<SpeciesBean>)request.getSession().getAttribute("speciesBeans");
-								int i=0;
-								for (ConserveBean bean : allconserve) {
+                            <div class="form-group">
+                                <label>养护地点</label>
+                                <input type="text" class="form-control" value="${targetconserve.con_place}" readonly>
+                            </div>
 
-							%>
-							<tbody>
-                                <td><%=bean.getCon_id()%></td>
-								<td><%=bean.getCon_name()%></td>
-								<td><%=speciesBeans.get(i).getSpecies_name()%></td>
-								<td><%=bean.getConby()%></td>
-								<td><%=bean.getCon_place()%></td>
-								<td><%=bean.getCon_ctime()%></td>
+                            <div class="form-group">
+                                <label>养护时间</label>
+                                <input type="text" class="form-control" value="${targetconserve.con_ctime}" readonly>
+                            </div>
 
-								<td>
-								<button type="button" class="btn btn-warning btn-xs"
-                                   onclick="javascrtpt:window.location.href='Superior_ConserveDetailedServlet?con_id=<%=bean.getCon_id()%>'">详情</button></td>
-							</tbody>
-							<%
-							i++;
-								}
-							%>
+                            <div class="form-group">
+                                <label>更新时间</label>
+                                <input type="text" class="form-control"  value="${targetconserve.con_utime}" readonly>
+                            </div>
 
-        						</table>
+                            <div class="form-group">
+                                <label>创建人</label>
+                                <input type="text" class="form-control" value="${targetconserve.createdby}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label>养护人</label>
+                                <input type="text" class="form-control"  value="${targetconserve.conby}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <a href="superior_conserve.jsp"><button type="button" class="btn btn-info btn-xs">返回</button></a>
+                            </div>
+      					        </div>
+                               </div>
         					</div>
         				</div>
         			</div>
         		</div>
         	</div>
-        	<script type="text/javascript">
 
-
-        	</script>
 
         </body>
         </html>

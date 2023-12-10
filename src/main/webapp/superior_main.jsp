@@ -58,13 +58,13 @@ body {
 			<!-- left, vertical navbar -->
 			<div class="col-md-2 bootstrap-admin-col-left">
 				<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-					<li><a href="/gardens/superior_conserve.jsp"><i
+					<li><a href="/gardens/SuperiorShowConserveServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 养护信息</a></li>
-					<li><a href="/gardens/superior_monitor.jsp"><i
+					<li><a href="/gardens/SuperiorShowMonitorServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测信息</a></li>
-					<li><a href="/gardens/conserve_mumber.jsp"><i
+					<li><a href="/gardens/SuperiorConPeopleServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 养护人员</a></li>
-					<li><a href="/gardens/monitor_mumber.jsp"><i
+					<li><a href="/gardens/SuperiorMonPeopleServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测人员</a></li>
 					<li><a href="/gardens/superior_plant.jsp"><i
 							class="glyphicon glyphicon-chevron-right"></i> 植物信息</a></li>

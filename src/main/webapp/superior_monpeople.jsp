@@ -80,7 +80,7 @@
         					<div class="col-lg-12">
         						<div class="panel panel-default bootstrap-admin-no-table-panel">
         							<div class="panel-heading">
-        								<div class="text-muted bootstrap-admin-box-title">养护信息</div>
+        								<div class="text-muted bootstrap-admin-box-title">监测人员信息</div>
         							</div>
         						</div>
         					</div>
@@ -92,37 +92,24 @@
         							cellspacing="0" width="100%">
         							<thead>
         								<tr>
-        									<th>养护编号</th>
-        									<th>养护名称</th>
-        									<th>养护对象</th>
-        									<th>养护人</th>
-                                            <th>养护地点</th>
-                                             <th>养护时间</th>
-                                             <th>操作</th>
+        									<th>人员ID</th>
+        									<th>人员姓名</th>
+        									<th>人员状态</th>
         								</tr>
         							</thead>
 
 							<%
-								ArrayList<ConserveBean> allconserve=(ArrayList<ConserveBean>)request.getSession().getAttribute("allconserve");
-                                ArrayList<SpeciesBean> speciesBeans =(ArrayList<SpeciesBean>)request.getSession().getAttribute("speciesBeans");
-								int i=0;
-								for (ConserveBean bean : allconserve) {
+								ArrayList<UserBean> allmonuser=(ArrayList<UserBean>)request.getSession().getAttribute("allmonuser");
+								for (UserBean bean : allmonuser) {
 
 							%>
 							<tbody>
-                                <td><%=bean.getCon_id()%></td>
-								<td><%=bean.getCon_name()%></td>
-								<td><%=speciesBeans.get(i).getSpecies_name()%></td>
-								<td><%=bean.getConby()%></td>
-								<td><%=bean.getCon_place()%></td>
-								<td><%=bean.getCon_ctime()%></td>
+                                <td><%=bean.getUser_id()%></td>
+								<td><%=bean.getUser_name()%></td>
+								<td><%=bean.getUser_state()%></td>
 
-								<td>
-								<button type="button" class="btn btn-warning btn-xs"
-                                   onclick="javascrtpt:window.location.href='Superior_ConserveDetailedServlet?con_id=<%=bean.getCon_id()%>'">详情</button></td>
-							</tbody>
+								</tbody>
 							<%
-							i++;
 								}
 							%>
 
@@ -132,10 +119,6 @@
         			</div>
         		</div>
         	</div>
-        	<script type="text/javascript">
-
-
-        	</script>
 
         </body>
         </html>
