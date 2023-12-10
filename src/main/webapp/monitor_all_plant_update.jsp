@@ -62,7 +62,9 @@
         </div>
     </div>
 </nav>
-
+<c:if test="${not empty feedbackmessage}">
+    <script>alert('${feedbackmessage}');</script>
+</c:if>
 <div class="container">
     <!-- left, vertical navbar & content -->
     <div class="row">
@@ -89,24 +91,24 @@
                 <div class="col-lg-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">监测管理-详细信息</div>
+                            <div class="text-muted bootstrap-admin-box-title">监测管理-修改信息</div>
                         </div>
+                        <form action="/gardens/monitorAllPlantUpdateDo" method="post">
                         <div class="bootstrap-admin-panel-content">
-
 
                             <div class="form-group">
                                 <label>创建人</label>
-                                <input type="text" class="form-control" name="createdby" id="createdby" value="${monitorBean.createdby}" readonly>
+                                <input type="text" class="form-control" name="createdby" id="createdby" value="${monitorBean.createdby}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>监测人</label>
-                                <input type="text" class="form-control" name="monby" id="monby" value="${monitorBean.monby}" readonly>
+                                <input type="text" class="form-control" name="monby" id="monby" value="${monitorBean.monby}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>监测地点</label>
-                                <input type="text" class="form-control" name="mon_place" id="mon_place" value="${monitorBean.mon_place}" readonly>
+                                <input type="text" class="form-control" name="mon_place" id="mon_place" value="${monitorBean.mon_place}" required>
                             </div>
 
                             <div class="form-group">
@@ -144,20 +146,31 @@
 
                             <div class="form-group">
                                 <label>监测对象</label>
-                                <input type="text" class="form-control" name="species_name" id="species_name" value="${speciesBean.species_name}" readonly>
+                                <select class="form-control" name="species_id" id="species_name" required> <!-- 注意这里的 name 改为 species_id -->
+                                    <c:forEach items="${speciesBeans}" var="species">
+                                        <c:choose>
+                                            <c:when test="${species.species_name == speciesBean.species_name}">
+                                                <!-- 使用 species_id 作为 value -->
+                                                <option value="${species.species_id}" selected="selected">${species.species_name}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <!-- 使用 species_id 作为 value -->
+                                                <option value="${species.species_id}">${species.species_name}</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </select>
                             </div>
 
-                            <div class="form-group">
-                                <label>植物别名</label>
-                                <input type="text" class="form-control" name="species_name" id="species_othername" value="${speciesBean.species_othername}" readonly>
-                            </div>
 
                             <div class="form-group">
                                 <a href="/gardens/monitorAllPlants"><button type="button" class="btn btn-info btn-xs">返回</button></a>
+                                <button type="submit" class="btn btn-success btn-xs">提交</button>
                             </div>
 
 
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
