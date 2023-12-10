@@ -1,12 +1,6 @@
 package servlet;
 
-import bean.ConserveBean;
-import bean.Conserve_speciesBean;
-import bean.SpeciesBean;
 import bean.UserBean;
-import dao.ConserveDao;
-import dao.Conserve_speciesDao;
-import dao.SpeciesDao;
 import dao.UserDao;
 
 import javax.servlet.ServletException;
@@ -17,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/SuperiorConPeopleServlet")
-public class SuperiorConPeopleServlet extends HttpServlet {
+@WebServlet("/SuperiorMonPeopleServlet")
+public class SuperiorMonPeopleServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    public SuperiorConPeopleServlet() {
+    public SuperiorMonPeopleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +22,14 @@ public class SuperiorConPeopleServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        //根据养护id 获取养护对象
 
-        ArrayList<UserBean> allconuser = new ArrayList<>();
+
+        ArrayList<UserBean> allmonuser = new ArrayList<>();
         UserDao userDao=new UserDao();
-        allconuser=userDao.getConserveUser();
-        request.getSession().setAttribute("allconuser", allconuser);
+        allmonuser=userDao.getMonitorUser();
+        request.getSession().setAttribute("allmonuser", allmonuser);
         // 转发请求到JSP页面
-            response.sendRedirect("/gardens/superior_conpeople.jsp");
+            response.sendRedirect("/gardens/superior_monpeople.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

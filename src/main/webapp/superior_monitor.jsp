@@ -61,9 +61,9 @@
 							class="glyphicon glyphicon-chevron-right"></i> 养护信息</a></li>
 					<li><a href="/gardens/SuperiorShowMonitorServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测信息</a></li>
-					<li><a href="/gardens/conserve_mumber.jsp"><i
+					<li><a href="/gardens/SuperiorConPeopleServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 养护人员</a></li>
-					<li><a href="/gardens/monitor_mumber.jsp"><i
+					<li><a href="/gardens/SuperiorMonPeopleServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测人员</a></li>
 					<li><a href="/gardens/superior_plant.jsp"><i
 							class="glyphicon glyphicon-chevron-right"></i> 植物信息</a></li>
@@ -125,7 +125,6 @@
                                    onclick="javascrtpt:window.location.href='Superior_MonitorDetailedServlet?mon_id=<%=bean.getMon_id()%>&dev_id=<%=deviceBeans.get(i).getDev_id()%>&species_id=<%=speciesBeans.get(i).getSpecies_id()%>&quo_id=<%=quotaBeans.get(i).getQuo_id()%>'">详情</button></td>
 							</tbody>
 							<%
-							i++;
 								}
 							%>
 

@@ -22,7 +22,7 @@ public class ConserveDao {
         try {
             stm = conn.prepareStatement(sql);
             rs = stm.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 ConserveBean tag = new ConserveBean();
                 tag.setCon_id(rs.getInt("con_id"));
                 tag.setCon_name(rs.getString("con_name"));

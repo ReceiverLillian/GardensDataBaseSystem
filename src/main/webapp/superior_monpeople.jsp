@@ -80,65 +80,45 @@
         					<div class="col-lg-12">
         						<div class="panel panel-default bootstrap-admin-no-table-panel">
         							<div class="panel-heading">
-        								<div  class="text-muted bootstrap-admin-box-title">监测信息详情</div>
+        								<div class="text-muted bootstrap-admin-box-title">监测人员信息</div>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
 
         				<div class="row">
         					<div class="col-lg-12">
         						<table id="data_list" class="table table-hover table-bordered"
         							cellspacing="0" width="100%">
-                            <div class="form-group">
-                                <label>监测编号</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_id}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测对象</label>
-                                <input type="text" class="form-control" value="${speciesBean.species_name}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_time}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测地点</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_place}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测设备</label>
-                                <input type="text" class="form-control"  value="${deviceBean.dev_name}" readonly>
-                            </div>
+        							<thead>
+        								<tr>
+        									<th>人员ID</th>
+        									<th>人员姓名</th>
+        									<th>人员状态</th>
+        								</tr>
+        							</thead>
 
-                            <div class="form-group">
-                                <label>监测指标</label>
-                                <input type="text" class="form-control"  value="${quotaBean.quo_name}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>创建人</label>
-                                <input type="text" class="form-control" value="${monitorBean.createdby}" readonly>
-                            </div>
+							<%
+								ArrayList<UserBean> allmonuser=(ArrayList<UserBean>)request.getSession().getAttribute("allmonuser");
+								for (UserBean bean : allmonuser) {
 
-                            <div class="form-group">
-                                <label>监测人</label>
-                                <input type="text" class="form-control"  value="${monitorBean.monby}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>创建时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_ctime}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>更新时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_utime}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <a href="superior_monitor.jsp"><button type="button" class="btn btn-info btn-xs">返回</button></a>
-                            </div>
-      					        </div>
-                               </div>
+							%>
+							<tbody>
+                                <td><%=bean.getUser_id()%></td>
+								<td><%=bean.getUser_name()%></td>
+								<td><%=bean.getUser_state()%></td>
+
+								</tbody>
+							<%
+								}
+							%>
+
+        						</table>
         					</div>
         				</div>
         			</div>
         		</div>
         	</div>
-
 
         </body>
         </html>
