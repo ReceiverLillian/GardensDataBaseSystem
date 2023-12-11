@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%--<%@ page--%>
 <%--	import="com.bean.AdminBean,com.dao.AdminDao"%>--%>
@@ -41,6 +40,7 @@
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
+
 <nav
         class="navbar navbar-light bg-primary navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small  navbar-custom"
         role="navigation">
@@ -76,76 +76,69 @@
                         class="glyphicon glyphicon-chevron-right"></i> 增加养护</a></li>
             </ul><br><br>
         </div>
+
+        <!-- content -->
         <div class="col-md-10">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">养护管理</div>
+                            <div class="text-muted bootstrap-admin-box-title">增加养护</div>
                         </div>
-                        <div class="bootstrap-admin-panel-content">
-                            <form method="post" action="/gardens/conserveAllPlantQuery" class="form-inline"  id="searchform">
+                        <form action="/gardens/conserveAddPlantDo" method="post">
+                            <div class="bootstrap-admin-panel-content">
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="searchWord" placeholder="搜索植物学名/养护人/创建人...">
+                                    <label>创建人</label>
+                                    <input type="text" class="form-control" name="createdby" id="createdby"  required>
                                 </div>
-                                <button type="submit" class="btn btn-default">搜索</button>
-                            </form>
-                            <div class="form-group">
+
+                                <div class="form-group">
+                                    <label>养护人</label>
+                                    <input type="text" class="form-control" name="conby" id="conby"  required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>养护地点</label>
+                                    <input type="text" class="form-control" name="con_place" id="con_place"  required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>养护名称</label>
+                                    <input type="text" class="form-control" name="con_name" id="con_name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>养护描述</label>
+                                    <input type="text" class="form-control" name="con_desc" id="con_desc"  required>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>监测对象</label>
+                                    <select class="form-control" name="species_id" id="species_name" required> <!-- 注意这里的 name 改为 species_id -->
+                                        <c:forEach items="${speciesBeans}" var="species">
+                                            <!-- 使用 species_id 作为 value -->
+                                            <option value="${species.species_id}">${species.species_name}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <a href="/gardens/monitorAllPlants"><button type="button" class="btn btn-info btn-xs">返回</button></a>
+                                    <button type="submit" class="btn btn-success btn-xs">提交</button>
+                                </div>
+
+
                             </div>
-                            <table class="table table-hover" >
-                                <thead>
-                                <tr>
-                                    <th>养护编号</th>
-                                    <th>养护名称</th>
-                                    <th>创建人</th>
-                                    <th>养护人</th>
-                                    <th>养护地点</th>
-                                    <th>养护创建时间</th>
-                                    <th>养护更新时间</th>
-                                    <th>养护对象</th>
-                                    <th>养护描述</th>
-
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${conserveBeans}" var="conserveBeans" varStatus="status">
-                                    <tr>
-                                        <td><c:out value="${conserveBeans.con_id}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.con_name}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.createdby}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.conby}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.con_place}"></c:out></td>
-                                        <td>
-                                            <fmt:formatDate value="${conserveBeans.con_ctime}" pattern="yyyy-MM-dd" />
-                                        </td>
-                                        <td>
-                                            <fmt:formatDate value="${conserveBeans.con_utime}" pattern="yyyy-MM-dd" />
-                                        </td>
-                                        <td>
-                                            <c:out value="${speciesBeans[status.index].species_name}"></c:out>
-                                        </td>
-                                        <td><c:out value="${conserveBeans.con_desc}"></c:out></td>
-
-
-                                        <td>
-                                            <a href="/gardens/conserveAllPlantUpdate?con_id=${conserveBeans.con_id}&species_id=${speciesBeans[status.index].species_id}">
-                                                <button type="button" class="btn btn-info btn-xs">修改</button>
-                                            </a>
-                                            <a href="/gardens/conserveAllPlantDelete?con_id=${conserveBeans.con_id}&species_id=${speciesBeans[status.index].species_id}">
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
+
 
     </div>
 </div>

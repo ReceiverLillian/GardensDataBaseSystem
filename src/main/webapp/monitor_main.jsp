@@ -81,38 +81,7 @@ body {
 
 			</div>
 
-			<!-- content -->
-<%--			<div class="col-md-10">--%>
-<%--				<div class="row">--%>
-<%--					<div class="col-md-6">--%>
-<%--						<div class="panel panel-default">--%>
-<%--							<div class="panel-heading">--%>
-<%--								<div class="text-muted bootstrap-admin-box-title">养护要求</div>--%>
-<%--							</div>--%>
-<%--							<div class="bootstrap-admin-panel-content">--%>
-<%--								<ul>--%>
-<%--									<li>养护人员可以在登录系统后，查询养护要求；</li>--%>
 
-<%--								</ul>--%>
-<%--							</div>--%>
-<%--						</div>--%>
-<%--					</div>--%>
-<%--					<div class="col-md-6">--%>
-<%--						<div class="panel panel-default">--%>
-<%--							<div class="panel-heading">--%>
-<%--								<div class="text-muted bootstrap-admin-box-title">进行养护</div>--%>
-<%--							</div>--%>
-<%--							<div class="bootstrap-admin-panel-content">--%>
-<%--								<ul>--%>
-<%--									<li>养护人员根据养护要求对园林植物进行定期养护</li>--%>
-
-<%--								</ul>--%>
-<%--							</div>--%>
-<%--						</div>--%>
-<%--					</div>--%>
-<%--				</div>--%>
-
-<%--			</div>--%>
 		</div>
 	</div>
 
