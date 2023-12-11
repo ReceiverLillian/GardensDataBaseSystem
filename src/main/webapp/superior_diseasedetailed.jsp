@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page
+	import="java.util.Base64,java.sql.Blob,java.io.InputStream,java.io.OutputStream"%>
+<%@ page
 	import="bean.*,dao.*"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -82,56 +84,53 @@
         					<div class="col-lg-12">
         						<div class="panel panel-default bootstrap-admin-no-table-panel">
         							<div class="panel-heading">
-        								<div  class="text-muted bootstrap-admin-box-title">监测信息详情</div>
+        								<div  class="text-muted bootstrap-admin-box-title">病虫害信息详情</div>
+
 
         				<div class="row">
         					<div class="col-lg-12">
         						<table id="data_list" class="table table-hover table-bordered"
         							cellspacing="0" width="100%">
+        				   <div class="form-group">
+                                <label>病虫害编号</label>
+                                     <input type="text" class="form-control" value="${diseaseBean.dis_id}" readonly>
+                                </div>
                             <div class="form-group">
-                                <label>监测编号</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_id}" readonly>
+                                <label>病虫害名称</label>
+                                <input type="text" class="form-control" value="${diseaseBean.dis_name}" readonly>
                             </div>
                             <div class="form-group">
-                                <label>监测对象</label>
-                                <input type="text" class="form-control" value="${speciesBean.species_name}" readonly>
+                                <label>防止方法</label>
+                                <input type="text" class="form-control" value="${diseaseBean.dis_tech}" readonly>
                             </div>
                             <div class="form-group">
-                                <label>监测时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_time}" readonly>
+                                <label>药剂名称</label>
+                                <input type="text" class="form-control" value="${diseaseBean.dis_medi}" readonly>
                             </div>
                             <div class="form-group">
-                                <label>监测地点</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_place}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测设备</label>
-                                <input type="text" class="form-control"  value="${deviceBean.dev_name}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测指标</label>
-                                <input type="text" class="form-control"  value="${quotaBean.quo_name}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>创建人</label>
-                                <input type="text" class="form-control" value="${monitorBean.createdby}" readonly>
+                                <label>药剂用量</label>
+                                <input type="text" class="form-control"  value="${diseaseBean.dis_mednum}" readonly>
                             </div>
 
                             <div class="form-group">
-                                <label>监测人</label>
-                                <input type="text" class="form-control"  value="${monitorBean.monby}" readonly>
+                                <label>作用期限</label>
+                                <input type="text" class="form-control"  value="${diseaseBean.dis_ddl}" readonly>
                             </div>
+                            <div class="form-group">
+                                <label>创建人员</label>
+                                <input type="text" class="form-control" value="${diseaseBean.createdby}" readonly>
+                            </div>
+
                             <div class="form-group">
                                 <label>创建时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_ctime}" readonly>
+                                <input type="text" class="form-control"  value="${diseaseBean.createdtime}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>更新时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_utime}" readonly>
+                                <input type="text" class="form-control" value="${diseaseBean.updatetime}" readonly>
                             </div>
                             <div class="form-group">
-                                <a href="superior_monitor.jsp"><button type="button" class="btn btn-info btn-xs">返回</button></a>
+                                <a href="superior_disease.jsp"><button type="button" class="btn btn-info btn-xs">返回</button></a>
                             </div>
       					        </div>
                                </div>

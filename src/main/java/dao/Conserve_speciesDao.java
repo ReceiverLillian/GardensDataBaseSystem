@@ -35,4 +35,75 @@ public class Conserve_speciesDao {
         }
         return converse_speciesBean;
     }
+
+    public boolean updateConserve_speciesByCon_id(int con_id, int species_id){
+        Connection conn = DBUtil.getConnectDb();
+        String sql = "UPDATE conserve_species SET species_id=? WHERE con_id=?";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        boolean updateResult = false;
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, species_id);
+            stm.setInt(2, con_id);
+
+            int rowsUpdated = stm.executeUpdate();
+            updateResult = rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+        return updateResult;
+    }
+
+    public boolean insertConserve_species(int con_id, int species_id){
+        Connection conn = DBUtil.getConnectDb();
+        String sql = "INSERT INTO conserve_species (species_id, con_id) VALUES (?, ?)";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        boolean updateResult = false;
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, species_id);
+            stm.setInt(2, con_id);
+
+            int rowsUpdated = stm.executeUpdate();
+            updateResult = rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+        return updateResult;
+    }
+
+    public boolean deleteConserve_speciesByCon_id(int id){
+        Connection conn = DBUtil.getConnectDb();
+        String sql = "DELETE FROM conserve_species WHERE con_id=? ";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        boolean isDeleted = false;
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, id);
+
+            int rowsUpdated = stm.executeUpdate();
+            isDeleted = rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+        return isDeleted;
+    }
 }

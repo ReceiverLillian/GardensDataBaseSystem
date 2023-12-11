@@ -62,13 +62,15 @@ body {
 							class="glyphicon glyphicon-chevron-right"></i> 养护信息</a></li>
 					<li><a href="/gardens/SuperiorShowMonitorServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测信息</a></li>
+					<li><a href="/gardens/SuperiorShowDiseaseServlet"><i
+							class="glyphicon glyphicon-chevron-right"></i> 病虫害信息</a></li>
 					<li><a href="/gardens/SuperiorConPeopleServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 养护人员</a></li>
 					<li><a href="/gardens/SuperiorMonPeopleServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测人员</a></li>
-					<li><a href="/gardens/superior_plant.jsp"><i
+					<li><a href="/gardens/SuperiorShowPlantsServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 植物信息</a></li>
-					<li><a href="/gardens/superior_type.jsp"><i
+					<li><a href="/gardens/SuperiorShowTypesServlet"><i
 							class="glyphicon glyphicon-chevron-right"></i> 类别信息</a></li>
 
 				</ul><br><br>

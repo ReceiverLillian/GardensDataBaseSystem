@@ -17,47 +17,49 @@
 <script src="static/js/bootstrap-dropdown.min.js"></script>
 <script src="static/js/adminUpdateInfo.js"></script>
 <script src="static/js/adminUpdatePwd.js"></script>
-<style>
-body {
-	background-image: url("05.jpg");
-}
-</style>
+	<style>
+		body {
+			background-image: url("05.jpg");
+		}
+		.navbar-custom .navbar-brand,
+		.navbar-custom .navbar-nav .nav-link,
+		.navbar-custom .navbar-nav .nav-link .glyphicon,
+		.navbar-custom .navbar-nav .nav-link:hover,
+		.navbar-custom .navbar-nav .nav-link:focus {
+			color: white !important; /* 使用 !important 来确保覆盖其他样式 */
+		}
+		/* 额外添加针对欢迎语的样式 */
+		.navbar-custom .navbar-nav .dropdown a {
+			color: white !important;
+		}
+	</style>
 </head>
 
 <script src="static/js/jquery.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
-<%--	<%--%>
-<%--		AdminBean admin = new AdminBean();--%>
-<%--		String aid = (String) session.getAttribute("aid");--%>
-<%--		AdminDao admindao = new AdminDao();--%>
-<%--		admin = admindao.get_AidInfo2(aid);--%>
-<%--	%>--%>
-	<nav
-		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
+
+<nav
+		class="navbar navbar-light bg-primary navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small  navbar-custom"
 		role="navigation">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="collapse navbar-collapse main-navbar-collapse">
-						<a class="navbar-brand" href="conserve_main.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown"><a href="#" role="button"
-								class="dropdown-toggle" data-hover="dropdown"> <i
-									class="glyphicon glyphicon-user"></i> 欢迎您，<%out.write(admin.getUsername());%>
-	 									(<%=session.getAttribute("aid")%>)
-                                                    <i class="caret"></i></a>
-								<ul class="dropdown-menu">
-									<li><a href="/gardens/staff_jiance.jsp">退出</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="collapse navbar-collapse main-navbar-collapse">
+					<a class="navbar-brand" href="/gardens/login.jsp"><strong>园林植物养护管理</strong></a>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown  text-white"><a href="#" role="button"
+															class="dropdown-toggle" data-hover="dropdown"> <i
+								class="glyphicon glyphicon-user "></i> 欢迎您，${user.user_name}
+						</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-	</nav>
+	</div>
+</nav>
 
 	<div class="container">
 		<!-- left, vertical navbar & content -->
@@ -65,46 +67,14 @@ body {
 			<!-- left, vertical navbar -->
 			<div class="col-md-2 bootstrap-admin-col-left">
 				<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-					<li><a href="/gardens/jiance_shougong.jsp"><i
-							class="glyphicon glyphicon-chevron-right"></i> 手工录入</a></li>
-					<li><a href="/gardens/jiance_daoru.jsp"><i
-							class="glyphicon glyphicon-chevron-right"></i> 数据导入</a></li>
-
+					<li><a href="/gardens/conserveAllPlants"><i
+							class="glyphicon glyphicon-chevron-right"></i> 养护管理</a></li>
+					<li><a href="/gardens/conserveAddPlant"><i
+							class="glyphicon glyphicon-chevron-right"></i> 增加养护</a></li>
 				</ul><br><br>
 
 			</div>
 
-			<!-- content -->
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">手工录入</div>
-							</div>
-							<div class="bootstrap-admin-panel-content">
-								<ul>
-									<li>监测人员可以在登录系统后，手工录入监测数据</li>
-                                    <li>手工录入监测数据只能单条录入</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">数据导入</div>
-							</div>
-							<div class="bootstrap-admin-panel-content">
-								<ul>
-									<li>监测人员可以选择文件进行数据导入</li>
-									<li>数据导入方式可以进行批量导入</li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
 
 			</div>
 		</div>
