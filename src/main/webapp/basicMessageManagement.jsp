@@ -313,6 +313,8 @@ table {
 		</tbody>
 
 	</table>
+
+	<a href="add_species.jsp" class="btn btn-primary">增加植物</a>
 </div>
 </body>
 </html>
