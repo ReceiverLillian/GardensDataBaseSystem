@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.Date;
+
 public class Species {
     private int speciesId;
     private String speciesName;
@@ -12,6 +14,11 @@ public class Species {
     private String pictureDescri;
     private String picturePlace;
     private String photoedBy;
+    private String province;  //分布区域
+    private String environment;  //生长环境
+    private String createdby;  //创建人员
+    private Date createTime;
+    private Date updateTime;
 
     public Species(){}
     public Species(int speciesId, String speciesName, String speciesOtherName, String familyName, String genusName, String speciesMorph, String speciesTech, String speciesAppl, String pictureDescri, String picturedPlace, String photoedBy) {
@@ -26,6 +33,46 @@ public class Species {
         this.pictureDescri = pictureDescri;
         this.picturePlace = picturedPlace;
         this.photoedBy = photoedBy;
+    }
+
+    public String getCreatedby() {
+        return createdby;
+    }
+
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(String environment) {
+        this.environment = environment;
     }
 
     public void setSpeciesId(int speciesId) {

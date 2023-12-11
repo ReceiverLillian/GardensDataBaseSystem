@@ -66,7 +66,7 @@ body {
 				<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
 					<li><a href="/gardens/basicMessageManagement"><i
 							class="glyphicon glyphicon-chevron-right"></i> 植物基本信息管理</a></li>
-					<li><a href="/gardens/sortManagement.jsp"><i
+					<li><a href="/gardens/sortManagement"><i
 							class="glyphicon glyphicon-chevron-right"></i> 植物分类管理</a></li>
 
 				</ul><br><br>
