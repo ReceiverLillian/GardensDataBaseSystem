@@ -69,11 +69,13 @@ body {
 				<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
 					<li><a href="/gardens/monitorAllPlants"><i
 							class="glyphicon glyphicon-chevron-right"></i> 监测管理</a></li>
-					<li><a href="/gardens/monitor_add_plant.jsp"><i
+					<li><a href="/gardens/monitorAddPlant"><i
 							class="glyphicon glyphicon-chevron-right"></i> 增加监测</a></li>
-					<li><a href="/gardens/monitor_quota.jsp"><i
-							class="glyphicon glyphicon-chevron-right"></i> 指标管理</a></li>
-					<li><a href="/gardens/monitor_quota_error.jsp"><i
+					<li><a href="/gardens/monitor_add_batchplant.jsp"><i
+							class="glyphicon glyphicon-chevron-right"></i> 批量增加监测</a></li>
+					<li><a href="/gardens/monitorQuotaAnalysis"><i
+							class="glyphicon glyphicon-chevron-right"></i> 指标分析</a></li>
+					<li><a href="/gardens/monitorQuotaError"><i
 							class="glyphicon glyphicon-chevron-right"></i> 异常指标</a></li>
 				</ul><br><br>
 

@@ -62,7 +62,9 @@
         </div>
     </div>
 </nav>
-
+<c:if test="${not empty feedbackmessage}">
+    <script>alert('${feedbackmessage}');</script>
+</c:if>
 <div class="container">
     <!-- left, vertical navbar & content -->
     <div class="row">
@@ -89,75 +91,28 @@
                 <div class="col-lg-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">监测管理-详细信息</div>
+                            <div class="text-muted bootstrap-admin-box-title">指标分析</div>
                         </div>
-                        <div class="bootstrap-admin-panel-content">
+
+                            <div class="bootstrap-admin-panel-content">
+
+                                <h4>监测指标平均值</h4>
+                                <ul class="list-group">
+                                    <c:forEach var="entry" items="${aveValue}">
+                                        <li class="list-group-item">${entry.key}: <span class="badge">${entry.value}</span></li>
+                                    </c:forEach>
+                                </ul>
+
+                                <h4>监测指标最大值</h4>
+                                <ul class="list-group">
+                                    <c:forEach var="entry" items="${maxValue}">
+                                        <li class="list-group-item">${entry.key}: <span class="badge">${entry.value}</span></li>
+                                    </c:forEach>
+                                </ul>
 
 
-                            <div class="form-group">
-                                <label>创建人</label>
-                                <input type="text" class="form-control" name="createdby" id="createdby" value="${monitorBean.createdby}" readonly>
                             </div>
 
-                            <div class="form-group">
-                                <label>监测人</label>
-                                <input type="text" class="form-control" name="monby" id="monby" value="${monitorBean.monby}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测地点</label>
-                                <input type="text" class="form-control" name="mon_place" id="mon_place" value="${monitorBean.mon_place}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测时间</label>
-                                <fmt:formatDate value="${monitorBean.mon_time}" pattern="yyyy-MM-dd" var="mon_time"/>
-                                <input type="date" class="form-control" name="mon_time" id="mon_time" value="${mon_time}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测创建时间</label>
-                                <fmt:formatDate value="${monitorBean.mon_ctime}" pattern="yyyy-MM-dd" var="mon_ctime"/>
-                                <input type="date" class="form-control" name="mon_ctime" id="mon_ctime" value="${mon_ctime}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测更新时间</label>
-                                <fmt:formatDate value="${monitorBean.mon_utime}" pattern="yyyy-MM-dd" var="mon_utime"/>
-                                <input type="date" class="form-control" name="mon_utime" id="mon_utime" value="${mon_utime}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测指标</label>
-                                <input type="text" class="form-control" name="quo_name" id="quo_name" value="${quotaBean.quo_name}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测值</label>
-                                <input type="text" class="form-control" name="quo_value" id="quo_value" value="${quotaBean.quo_value}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测设备</label>
-                                <input type="text" class="form-control" name="dev_name" id="dev_name" value="${deviceBean.dev_name}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测对象</label>
-                                <input type="text" class="form-control" name="species_name" id="species_name" value="${speciesBean.species_name}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>植物别名</label>
-                                <input type="text" class="form-control" name="species_name" id="species_othername" value="${speciesBean.species_othername}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <a href="/gardens/monitorAllPlants"><button type="button" class="btn btn-info btn-xs">返回</button></a>
-                            </div>
-
-
-                        </div>
                     </div>
                 </div>
             </div>
