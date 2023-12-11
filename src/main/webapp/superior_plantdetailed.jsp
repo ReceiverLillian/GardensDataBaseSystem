@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page
+	import="java.util.Base64,java.sql.Blob,java.io.InputStream,java.io.OutputStream"%>
+<%@ page
 	import="bean.*,dao.*"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -82,56 +84,85 @@
         					<div class="col-lg-12">
         						<div class="panel panel-default bootstrap-admin-no-table-panel">
         							<div class="panel-heading">
-        								<div  class="text-muted bootstrap-admin-box-title">监测信息详情</div>
+        								<div  class="text-muted bootstrap-admin-box-title">植物信息详情</div>
+                            <div class="form-group">
+                                <label>植物编号</label>
+                                <input type="text" class="form-control" value="${speciesBean.species_id}" readonly>
+                            </div>
 
+                        <%
+                                ArrayList<PictureBean> pictureBeans=(ArrayList<PictureBean>)session.getAttribute("pictureBeans");
+                                for(PictureBean bean : pictureBeans){
+                                Blob imageBlob = (Blob) bean.getPicture_content();
+                                String base64Image = Base64.getEncoder().encodeToString(imageBlob.getBytes(1, (int) imageBlob.length()));
+                        %>
+                            <div>
+                                <img style="width: 300px; align-items: center;" src="data:image/jpeg;base64, <%= base64Image %>" >
+                            </div>
+                            <div class="form-group">
+                                <label>图片描述</label>
+                                <input type="text" class="form-control" value="<%=bean.getPicture_discri() %>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>拍摄者/单位</label>
+                                <input type="text" class="form-control" value="<%=bean.getPhototedby() %>" readonly>
+                            </div>
+
+                        <%
+                            }
+                        %>
         				<div class="row">
         					<div class="col-lg-12">
         						<table id="data_list" class="table table-hover table-bordered"
         							cellspacing="0" width="100%">
                             <div class="form-group">
-                                <label>监测编号</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_id}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测对象</label>
+                                <label>植物名称</label>
                                 <input type="text" class="form-control" value="${speciesBean.species_name}" readonly>
                             </div>
                             <div class="form-group">
-                                <label>监测时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_time}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测地点</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_place}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测设备</label>
-                                <input type="text" class="form-control"  value="${deviceBean.dev_name}" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label>监测指标</label>
-                                <input type="text" class="form-control"  value="${quotaBean.quo_name}" readonly>
-                            </div>
-                            <div class="form-group">
                                 <label>创建人</label>
-                                <input type="text" class="form-control" value="${monitorBean.createdby}" readonly>
+                                <input type="text" class="form-control" value="${speciesBean.createdby}" readonly>
                             </div>
-
                             <div class="form-group">
-                                <label>监测人</label>
-                                <input type="text" class="form-control"  value="${monitorBean.monby}" readonly>
+                                <label>植物别名</label>
+                                <input type="text" class="form-control" value="${speciesBean.species_othername}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>创建时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_ctime}" readonly>
+                                <input type="text" class="form-control"  value="${speciesBean.createdtime}" readonly>
                             </div>
+
                             <div class="form-group">
                                 <label>更新时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_utime}" readonly>
+                                <input type="text" class="form-control"  value="${speciesBean.updatetime}" readonly>
                             </div>
                             <div class="form-group">
-                                <a href="superior_monitor.jsp"><button type="button" class="btn btn-info btn-xs">返回</button></a>
+                                <label>植物形态</label>
+                                <input type="text" class="form-control" value="${speciesBean.species_morph}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label>栽培技术</label>
+                                <input type="text" class="form-control"  value="${speciesBean.species_tech}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>应用价格</label>
+                                <input type="text" class="form-control" value="${speciesBean.species_appl}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>所属科</label>
+                                <input type="text" class="form-control" value="${speciesBean.family_name}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>所属属</label>
+                                <input type="text" class="form-control" value="${speciesBean.genus_name}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>分布地区</label>
+                                <input type="text" class="form-control" value="${totalprovince}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <a href="superior_plants.jsp"><button type="button" class="btn btn-info btn-xs">返回</button></a>
                             </div>
       					        </div>
                                </div>

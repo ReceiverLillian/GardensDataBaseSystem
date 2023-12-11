@@ -13,6 +13,12 @@ public class SpeciesBean {
     private String species_tech;
     private String species_appl;
 
+
+    private String family_name; //科
+    private String genus_name; //属
+    private String totalprovience;
+
+
     public int getSpecies_id() {
         return species_id;
     }
@@ -83,5 +89,29 @@ public class SpeciesBean {
 
     public void setSpecies_appl(String species_appl) {
         this.species_appl = species_appl;
+    }
+
+    public void setFamily_name(String family_name) {
+        this.family_name = family_name;
+    }
+
+    public void setGenus_name(String genus_name) {
+        this.genus_name = genus_name;
+    }
+
+    public String getFamily_name() {
+        return family_name;
+    }
+
+    public String getGenus_name() {
+        return genus_name;
+    }
+
+    public String getTotalprovience() {
+        return totalprovience;
+    }
+
+    public void setTotalprovience(String totalprovience) {
+        this.totalprovience = totalprovience;
     }
 }

@@ -82,65 +82,56 @@
         					<div class="col-lg-12">
         						<div class="panel panel-default bootstrap-admin-no-table-panel">
         							<div class="panel-heading">
-        								<div  class="text-muted bootstrap-admin-box-title">监测信息详情</div>
+        								<div class="text-muted bootstrap-admin-box-title">病虫害信息</div>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
 
         				<div class="row">
         					<div class="col-lg-12">
         						<table id="data_list" class="table table-hover table-bordered"
         							cellspacing="0" width="100%">
-                            <div class="form-group">
-                                <label>监测编号</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_id}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测对象</label>
-                                <input type="text" class="form-control" value="${speciesBean.species_name}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_time}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测地点</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_place}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>监测设备</label>
-                                <input type="text" class="form-control"  value="${deviceBean.dev_name}" readonly>
-                            </div>
+        							<thead>
+        								<tr>
+        									<th>病虫害编号</th>
+        									<th>病虫害名称</th>
+        									<th>防治方法</th>
+        									<th>药剂名称</th>
+                                            <th>药剂用量</th>
+                                             <th>作用期限</th>
+                                             <th>操作</th>
+        								</tr>
+        							</thead>
 
-                            <div class="form-group">
-                                <label>监测指标</label>
-                                <input type="text" class="form-control"  value="${quotaBean.quo_name}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>创建人</label>
-                                <input type="text" class="form-control" value="${monitorBean.createdby}" readonly>
-                            </div>
+							<%
+								ArrayList<DiseaseBean> diseaseBeans=(ArrayList<DiseaseBean>)request.getSession().getAttribute("diseaseBeans");
 
-                            <div class="form-group">
-                                <label>监测人</label>
-                                <input type="text" class="form-control"  value="${monitorBean.monby}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>创建时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_ctime}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>更新时间</label>
-                                <input type="text" class="form-control" value="${monitorBean.mon_utime}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <a href="superior_monitor.jsp"><button type="button" class="btn btn-info btn-xs">返回</button></a>
-                            </div>
-      					        </div>
-                               </div>
+								for (DiseaseBean bean : diseaseBeans) {
+
+							%>
+							<tbody>
+                                <td><%=bean.getDis_id()%></td>
+								<td><%=bean.getDis_name()%></td>
+								<td><%=bean.getDis_tech()%></td>
+								<td><%=bean.getDis_medi() %></td>
+								<td><%=bean.getDis_mednum()%></td>
+								<td><%=bean.getDis_ddl()%></td>
+
+								<td>
+								<button type="button" class="btn btn-warning btn-xs"
+                                   onclick="javascrtpt:window.location.href='Superior_DiseaseDetailedServlet?dis_id=<%=bean.getDis_id()%>'">详情</button></td>
+							</tbody>
+							<%
+								}
+							%>
+
+        						</table>
         					</div>
         				</div>
         			</div>
         		</div>
         	</div>
-
 
         </body>
         </html>
