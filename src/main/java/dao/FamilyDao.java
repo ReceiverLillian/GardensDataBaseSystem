@@ -147,8 +147,13 @@ public class FamilyDao {
                 familyBean.setFamily_name(rs.getString("family_name"));
                 familyBean.setFamily_id(rs.getInt("family_id"));
 
-                familyBean.setGenus_name(rs.getString("genus_name"));
 
+
+                if(rs.getString("genus_name")==null){
+                    familyBean.setGenus_name("暂未添加下属属");
+                }else{
+                    familyBean.setGenus_name(rs.getString("genus_name"));
+                }
 
                 if(rs.getString("species_name")==null){
                     familyBean.setSpecies_name("暂未添加下属种");

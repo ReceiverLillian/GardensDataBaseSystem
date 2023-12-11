@@ -35,14 +35,14 @@ public class SuperiorSelectServlet extends HttpServlet {
         String name = request.getParameter("name");
         ArrayList<SpeciesBean> selectspecies = new ArrayList<>();
         SpeciesDao speciesDao=new SpeciesDao();
-        selectspecies=speciesDao.selectAllSpecies();//找到全部植物信息
+        selectspecies=speciesDao.SuperiorselectAllSpecies();//找到全部植物信息
 
         ArrayList<SpeciesBean> result = new ArrayList<>();
         ProvinceDao provinceDao=new ProvinceDao();
         for(SpeciesBean spe : selectspecies){
             ArrayList<ProvinceBean> provinceBeans=new ArrayList<>();
             provinceBeans=provinceDao.getProvinceBySpecies(spe.getSpecies_id());
-            String totalprovince="";
+            String totalprovince=" ";
             for(ProvinceBean bean : provinceBeans){
                 if (bean.getProvince_name()!=null){
                     totalprovince+= bean.getProvince_name()+";";

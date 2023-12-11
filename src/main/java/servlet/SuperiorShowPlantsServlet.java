@@ -28,7 +28,7 @@ public class SuperiorShowPlantsServlet extends HttpServlet {
         ArrayList<SpeciesBean> allspecies = new ArrayList<>();
 
         SpeciesDao speciesDao=new SpeciesDao();
-        allspecies=speciesDao.selectAllSpecies();
+        allspecies=speciesDao.SuperiorselectAllSpecies();
         ProvinceDao provinceDao=new ProvinceDao();
         for(SpeciesBean spe : allspecies){
             ArrayList<ProvinceBean> provinceBeans=new ArrayList<>();

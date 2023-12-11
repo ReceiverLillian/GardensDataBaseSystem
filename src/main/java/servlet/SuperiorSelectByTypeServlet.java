@@ -35,7 +35,7 @@ public class SuperiorSelectByTypeServlet extends HttpServlet {
         String name2 = request.getParameter("name2");
         ArrayList<SpeciesBean> selectspecies = new ArrayList<>();
         SpeciesDao speciesDao=new SpeciesDao();
-        selectspecies=speciesDao.selectAllSpecies();//找到全部植物信息
+        selectspecies=speciesDao.SuperiorselectAllSpecies();//找到全部植物信息
 
         ArrayList<SpeciesBean> result = new ArrayList<>();
         ProvinceDao provinceDao=new ProvinceDao();
