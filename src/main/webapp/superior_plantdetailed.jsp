@@ -140,6 +140,10 @@
                                 <label>植物形态</label>
                                 <input type="text" class="form-control" value="${speciesBean.species_morph}" readonly>
                             </div>
+                            <div class="form-group">
+                                <label>生长环境</label>
+                                <input type="text" class="form-control" value="${speciesBean.species_environment}" readonly>
+                            </div>
 
                             <div class="form-group">
                                 <label>栽培技术</label>

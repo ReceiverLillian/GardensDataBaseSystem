@@ -18,6 +18,7 @@ public class SpeciesBean {
     private String genus_name; //属
     private String totalprovience;
 
+    private String species_environment; //生长环境
 
     public int getSpecies_id() {
         return species_id;
@@ -113,5 +114,13 @@ public class SpeciesBean {
 
     public void setTotalprovience(String totalprovience) {
         this.totalprovience = totalprovience;
+    }
+
+    public String getSpecies_environment() {
+        return species_environment;
+    }
+
+    public void setSpecies_environment(String species_environment) {
+        this.species_environment = species_environment;
     }
 }
