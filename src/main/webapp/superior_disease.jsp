@@ -96,10 +96,10 @@
         								<tr>
         									<th>病虫害编号</th>
         									<th>病虫害名称</th>
+        									<th>监测对象</th>
         									<th>防治方法</th>
         									<th>药剂名称</th>
                                             <th>药剂用量</th>
-                                             <th>作用期限</th>
                                              <th>操作</th>
         								</tr>
         							</thead>
@@ -113,10 +113,10 @@
 							<tbody>
                                 <td><%=bean.getDis_id()%></td>
 								<td><%=bean.getDis_name()%></td>
+								<td><%=bean.getDis_target()%></td>
 								<td><%=bean.getDis_tech()%></td>
 								<td><%=bean.getDis_medi() %></td>
 								<td><%=bean.getDis_mednum()%></td>
-								<td><%=bean.getDis_ddl()%></td>
 
 								<td>
 								<button type="button" class="btn btn-warning btn-xs"

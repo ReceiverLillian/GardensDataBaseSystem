@@ -100,6 +100,10 @@
                                 <input type="text" class="form-control" value="${diseaseBean.dis_name}" readonly>
                             </div>
                             <div class="form-group">
+                                <label>防止对象名称</label>
+                                <input type="text" class="form-control" value="${diseaseBean.dis_target}" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label>防止方法</label>
                                 <input type="text" class="form-control" value="${diseaseBean.dis_tech}" readonly>
                             </div>

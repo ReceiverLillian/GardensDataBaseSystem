@@ -15,10 +15,14 @@ public class DiseaseDao {
     /*
     获取所有病虫害信息
      */
-    public ArrayList<DiseaseBean> getAllDisease(){
+    public ArrayList<DiseaseBean> SuperiorgetAllDisease(){
         ArrayList<DiseaseBean> tag_Array = new ArrayList<DiseaseBean>();
         Connection conn = DBUtil.getConnectDb();
-        String sql="SELECT * FROM disease";
+        String sql="SELECT d.dis_id,d.dis_name,d.createdby,d.createdtime,d.dis_tech,d.updatetime,s.species_name,m.med_name,dm.dis_ddl,dm.dis_mednum\n" +
+                "                    FROM disease d\n" +
+                "                    LEFT JOIN disease_med dm ON d.dis_id = dm.dis_id\n" +
+                "                    LEFT JOIN medicine m ON dm.med_id = m.med_id\n" +
+                "                    LEFT JOIN species s ON d.dis_target = s.species_id";
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
@@ -26,15 +30,19 @@ public class DiseaseDao {
              rs = stm.executeQuery();
             while (rs.next()) {
                 DiseaseBean diseaseBean=new DiseaseBean();
+                diseaseBean.setDis_id(rs.getInt("dis_id"));
+                diseaseBean.setDis_name(rs.getString("dis_name"));
+
                 diseaseBean.setCreatedby(rs.getString("createdby"));
                 diseaseBean.setCreatedtime(rs.getDate("createdtime"));
                 diseaseBean.setDis_ddl(rs.getString("dis_ddl"));
-                diseaseBean.setDis_id(rs.getInt("dis_id"));
-                diseaseBean.setDis_medi(rs.getString("dis_medi"));
+
+                diseaseBean.setDis_medi(rs.getString("med_name"));
                 diseaseBean.setDis_mednum(rs.getString("dis_mednum"));
-                diseaseBean.setDis_name(rs.getString("dis_name"));
                 diseaseBean.setUpdatetime(rs.getDate("updatetime"));
                 diseaseBean.setDis_tech(rs.getString("dis_tech"));
+
+                diseaseBean.setDis_target(rs.getString("species_name"));
 
                 tag_Array.add(diseaseBean);
             }
@@ -51,7 +59,13 @@ public class DiseaseDao {
      */
     public DiseaseBean getDiseaseById(int dis_id){
         Connection conn = DBUtil.getConnectDb();
-        String sql="SELECT * FROM disease where dis_id='"+dis_id+"'";
+        String sql="SELECT d.dis_id,d.dis_name,d.createdby,d.createdtime,d.dis_tech,d.updatetime,\n" +
+                "s.species_name,m.med_name,dm.dis_ddl,dm.dis_mednum\n" +
+                "                                    FROM disease d\n" +
+                "                                    LEFT JOIN disease_med dm ON d.dis_id = dm.dis_id\n" +
+                "                                    LEFT JOIN medicine m ON dm.med_id = m.med_id\n" +
+                "                                   LEFT JOIN species s ON d.dis_target = s.species_id\n" +
+                "where d.dis_id='"+dis_id+"'";
         PreparedStatement stm = null;
         ResultSet rs = null;
         DiseaseBean diseaseBean=new DiseaseBean();
@@ -59,15 +73,19 @@ public class DiseaseDao {
             stm = conn.prepareStatement(sql);
             rs = stm.executeQuery();
             if (rs.next()) {
+                diseaseBean.setDis_id(rs.getInt("dis_id"));
+                diseaseBean.setDis_name(rs.getString("dis_name"));
+
                 diseaseBean.setCreatedby(rs.getString("createdby"));
                 diseaseBean.setCreatedtime(rs.getDate("createdtime"));
                 diseaseBean.setDis_ddl(rs.getString("dis_ddl"));
-                diseaseBean.setDis_id(rs.getInt("dis_id"));
-                diseaseBean.setDis_medi(rs.getString("dis_medi"));
+
+                diseaseBean.setDis_medi(rs.getString("med_name"));
                 diseaseBean.setDis_mednum(rs.getString("dis_mednum"));
-                diseaseBean.setDis_name(rs.getString("dis_name"));
                 diseaseBean.setUpdatetime(rs.getDate("updatetime"));
                 diseaseBean.setDis_tech(rs.getString("dis_tech"));
+
+                diseaseBean.setDis_target(rs.getString("species_name"));
 
             }
         } catch (SQLException e) {

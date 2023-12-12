@@ -32,7 +32,7 @@ public class SuperiorShowDiseaseServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<DiseaseBean> diseaseBeans = new ArrayList<>();
         DiseaseDao diseaseDao=new DiseaseDao();
-        diseaseBeans=diseaseDao.getAllDisease();
+        diseaseBeans=diseaseDao.SuperiorgetAllDisease();
         request.getSession().setAttribute("diseaseBeans", diseaseBeans);
 
 

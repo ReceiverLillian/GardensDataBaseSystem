@@ -14,6 +14,8 @@ public class DiseaseBean {
 
     private Date updatetime;
 
+    private String dis_target;
+
     public void setCreatedby(String createdby) {
         this.createdby = createdby;
     }
@@ -84,5 +86,13 @@ public class DiseaseBean {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+    }
+
+    public String getDis_target() {
+        return dis_target;
+    }
+
+    public void setDis_target(String dis_target) {
+        this.dis_target = dis_target;
     }
 }
