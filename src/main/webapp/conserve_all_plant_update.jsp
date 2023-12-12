@@ -75,6 +75,10 @@
                         class="glyphicon glyphicon-chevron-right"></i> 养护管理</a></li>
                 <li><a href="/gardens/conserveAddPlant"><i
                         class="glyphicon glyphicon-chevron-right"></i> 增加养护</a></li>
+                <li><a href="/gardens/conserveAllDisease"><i
+                        class="glyphicon glyphicon-chevron-right"></i> 病虫害管理</a></li>
+                <li><a href="/gardens/conserveAddDisease"><i
+                        class="glyphicon glyphicon-chevron-right"></i> 增加病虫害</a></li>
             </ul><br><br>
 
         </div>
