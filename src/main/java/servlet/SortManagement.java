@@ -66,6 +66,7 @@ public class SortManagement extends HttpServlet {
                 String environment = rs.getString("species_environment");
                 String createdby = rs.getString("createdby");
                 Date createdTime = rs.getDate("createdtime");
+                Date updateTime = rs.getDate("updatetime");
                 String provinceName = rs.getString("province_name");
 
                 System.out.println("*******"+speciesName);
@@ -81,6 +82,7 @@ public class SortManagement extends HttpServlet {
                 plant.setEnvironment(environment);
                 plant.setCreatedby(createdby);
                 plant.setCreateTime(createdTime);
+                plant.setUpdateTime(updateTime);
                 plant.setProvince(provinceName);
                 plantList.add(plant);
             }

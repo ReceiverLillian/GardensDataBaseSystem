@@ -51,14 +51,26 @@ public class SpeciesDao {
         ResultSet rs = null;
         Species species = new Species();
 
-        String query = "SELECT s.species_name, s.species_othername, s.species_morph, s.species_tech, s.species_appl, "
-                + "f.family_name, g.genus_name "
+        String query = /*"SELECT s.species_name, s.species_othername, s.species_morph, s.species_tech, s.species_appl, s.species_environment,"
+                + "f.family_name, g.genus_name , p.province_name"
                 + "FROM species s "
                 + "JOIN genus_species gs ON s.species_id = gs.species_id "
                 + "JOIN genus g ON gs.genus_id = g.genus_id "
                 + "JOIN family_genus fg ON g.genus_id = fg.genus_id "
                 + "JOIN family f ON fg.family_id = f.family_id "
-                + "WHERE s.species_id = ?";
+                + "JOIN province_species ps ON s.species_id = ps.species_id"
+                + "JOIN province p ON ps.province_id = p.pronvince_id"
+                + "WHERE s.species_id = ?";*/
+        "SELECT s.species_name, s.species_othername, s.species_morph, s.species_tech, s.species_appl, s.species_environment,\n" +
+                "       f.family_name, g.genus_name, p.province_name\n" +
+                "FROM species s\n" +
+                "JOIN genus_species gs ON s.species_id = gs.species_id\n" +
+                "JOIN genus g ON gs.genus_id = g.genus_id\n" +
+                "JOIN family_genus fg ON g.genus_id = fg.genus_id\n" +
+                "JOIN family f ON fg.family_id = f.family_id\n" +
+                "JOIN province_species ps ON s.species_id = ps.species_id\n" +
+                "JOIN province p ON ps.province_id = p.province_id\n" +
+                "WHERE s.species_id = ?";
 
         try {
 
@@ -81,8 +93,10 @@ public class SpeciesDao {
                 species.setSpeciesMorph(rs.getString("species_morph"));
                 species.setSpeciesTech(rs.getString("species_tech"));
                 species.setSpeciesAppl(rs.getString("species_appl"));
+                species.setEnvironment(rs.getString("species_environment"));
                 species.setFamilyName(rs.getString("family_name"));
                 species.setGenusName(rs.getString("genus_name"));
+                species.setProvince(rs.getString("province_name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

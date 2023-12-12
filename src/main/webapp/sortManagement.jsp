@@ -274,7 +274,7 @@ table {
 				for (Species species : speciesList) {
 		%>
 		<tr>
-			<form action="modify_species.jsp" method="post">
+			<form action="modify_sort.jsp" method="post">
 				<td><%= species.getSpeciesId() %></td>
 				<td><%= species.getSpeciesName() %></td>
 				<%--<td>test</td>--%>
@@ -316,7 +316,7 @@ table {
 
 	</table>
 
-	<a href="add_species.jsp" class="btn btn-primary">增加植物</a>
+	<a href="add_sort.jsp" class="btn btn-primary">增加植物</a>
 </div>
 </body>
 </html>
