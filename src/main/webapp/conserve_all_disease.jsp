@@ -61,7 +61,9 @@
         </div>
     </div>
 </nav>
-
+<c:if test="${not empty feedbackmessage}">
+    <script>alert('${feedbackmessage}');</script>
+</c:if>
 <div class="container">
     <!-- left, vertical navbar & content -->
     <div class="row">
@@ -83,12 +85,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">养护管理-搜索结果</div>
+                            <div class="text-muted bootstrap-admin-box-title">病虫害管理</div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
-                            <form method="post" action="/gardens/conserveAllPlantQuery" class="form-inline"  id="searchform">
+                            <form method="post" action="/gardens/conserveAllDiseaseQuery" class="form-inline"  id="searchform">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="searchWord" placeholder="搜索植物学名/养护人/创建人...">
+                                    <input type="text" class="form-control" name="searchWord" placeholder="搜索植物学名/病名/药名...">
                                 </div>
                                 <button type="submit" class="btn btn-default">搜索</button>
                             </form>
@@ -97,42 +99,45 @@
                             <table class="table table-hover" >
                                 <thead>
                                 <tr>
-                                    <th>养护编号</th>
-                                    <th>养护名称</th>
-                                    <th>创建人</th>
-                                    <th>养护人</th>
-                                    <th>养护地点</th>
-                                    <th>养护创建时间</th>
-                                    <th>养护更新时间</th>
+                                    <th>病名</th>
+                                    <th>药名</th>
+                                    <th>药剂用量</th>
+                                    <th>防治方法</th>
+                                    <th>作用期限</th>
+                                    <th>创建时间</th>
+                                    <th>更新时间</th>
                                     <th>养护对象</th>
 
                                     <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${conserveBeans}" var="conserveBeans" varStatus="status">
+                                <c:forEach items="${diseaseMedBeans}" var="diseaseMedBeans" varStatus="status">
                                     <tr>
-                                        <td><c:out value="${conserveBeans.con_id}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.createdby}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.conby}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.con_place}"></c:out></td>
+                                        <td><c:out value="${diseaseMedBeans.dis_name}"></c:out></td>
+                                        <td><c:out value="${diseaseMedBeans.med_name}"></c:out></td>
+                                        <td><c:out value="${diseaseMedBeans.dis_mednum}"></c:out></td>
+                                        <td><c:out value="${diseaseBeans[status.index].dis_tech}"></c:out></td>
                                         <td>
-                                            <fmt:formatDate value="${conserveBeans.con_ctime}" pattern="yyyy-MM-dd" />
+                                            <fmt:formatDate value="${diseaseMedBeans.dis_ddl}" pattern="yyyy-MM-dd" />
                                         </td>
                                         <td>
-                                            <fmt:formatDate value="${conserveBeans.con_utime}" pattern="yyyy-MM-dd" />
+                                            <fmt:formatDate value="${diseaseMedBeans.dis_ctime}" pattern="yyyy-MM-dd" />
+                                        </td>
+                                        <td>
+                                            <fmt:formatDate value="${diseaseMedBeans.dis_utime}" pattern="yyyy-MM-dd" />
                                         </td>
                                         <td>
                                             <c:out value="${speciesBeans[status.index].species_name}"></c:out>
                                         </td>
-                                        <td><c:out value="${conserveBeans.con_desc}"></c:out></td>
+
 
 
                                         <td>
-                                            <a href="/gardens/conserveAllPlantUpdate?con_id=${conserveBeans.con_id}&species_id=${speciesBeans[status.index].species_id}">
+                                            <a href="/gardens/conserveAllDiseaseUpdate?dis_id=${diseaseMedBeans.dis_id}&med_id=${diseaseMedBeans.med_id}&species_id=${speciesBeans[status.index].species_id}">
                                                 <button type="button" class="btn btn-info btn-xs">修改</button>
                                             </a>
-                                            <a href="/gardens/conserveAllPlantDelete?con_id=${conserveBeans.con_id}&species_id=${speciesBeans[status.index].species_id}">
+                                            <a href="/gardens/conserveAllDiseaseDelete?dis_id=${diseaseMedBeans.dis_id}&med_id=${diseaseMedBeans.med_id}&species_id=${speciesBeans[status.index].species_id}">
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </a>
                                         </td>
@@ -140,9 +145,7 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
-                            <div class="form-group">
-                                <a href="/gardens/conserveAllPlants"><button type="button" class="btn btn-info btn-xs">返回</button></a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
