@@ -155,6 +155,34 @@
 	</div>
 
 	<!-- 其他表单字段 -->
+	<div class="row">
+		<div class="col-md-12">
+			<%--<div class="form-group">
+				&lt;%&ndash;@declare id="province"&ndash;%&gt;<label for="province" style="color: white;">分布区域:</label>
+				<textarea class="form-control" id="province" name="province" ><%= species.getProvince() %></textarea>
+			</div>--%>
+			<div class="form-group">
+				<%--@declare id="province"--%>
+					<label for="province" style="color: white;">分布区域:</label>
+					<select class="form-control" id="province" name="province">
+						<%
+							String[] provinces = {"北京市", "天津市", "河北省", "山西省", "内蒙古自治区", "辽宁省", "吉林省", "黑龙江省", "上海市", "江苏省", "浙江省", "安徽省", "福建省", "江西省", "山东省", "河南省", "湖北省", "湖南省", "广东省", "广西壮族自治区", "海南省", "重庆市", "四川省", "贵州省", "云南省", "西藏自治区", "陕西省", "甘肃省", "青海省", "宁夏回族自治区", "新疆维吾尔自治区", "台湾省", "香港特别行政区", "澳门特别行政区"};
+
+							for (String province : provinces) {
+						%>
+						<option value="<%= province %>"><%= province %></option>
+						<%
+							}
+						%>
+					</select>
+			</div>
+			<div class="form-group">
+				<%--@declare id="environment"--%><label for="environment" style="color: white;">生长环境:</label>
+				<textarea class="form-control" id="environment" name="environment" ></textarea>
+			</div>
+
+		</div>
+	</div>
 	<%--<input type="hidden" name="speciesId" value="<%= request.getParameter("speciesId") %>" />--%>
 
 	<div class="text-center">

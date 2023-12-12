@@ -178,6 +178,9 @@ table {
 							alert("删除失败，请重试。");
 						});
 			}
+
+			// 阻止表单提交
+			event.preventDefault();
 		}
 	</script>
 
@@ -301,6 +304,7 @@ table {
 					<!-- 删除按钮 -->
 				</td>
 			</form>
+
 		</tr>
 		<%
 			}
@@ -316,7 +320,7 @@ table {
 
 	</table>
 
-	<a href="add_sort.jsp" class="btn btn-primary">增加植物</a>
+	<a href="add_species.jsp" class="btn btn-primary">增加植物</a>
 </div>
 </body>
 </html>

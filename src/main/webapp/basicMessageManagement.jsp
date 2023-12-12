@@ -178,6 +178,8 @@ table {
 							alert("删除失败，请重试。");
 						});
 			}
+			// 阻止表单提交
+			event.preventDefault();
 		}
 	</script>
 
@@ -299,6 +301,7 @@ table {
 					<!-- 删除按钮 -->
 				</td>
 			</form>
+
 		</tr>
 		<%
 			}

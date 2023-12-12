@@ -3,11 +3,7 @@ package servlet;
 import util.DBUtil;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +23,8 @@ public class AddSpecies extends HttpServlet {
         String morphology = request.getParameter("morphology");
         String cultivation = request.getParameter("cultivation");
         String application = request.getParameter("application");
-
+        String province = request.getParameter("province");
+        String environment = request.getParameter("environment");
 
 
         // 执行数据库操作
@@ -40,8 +37,8 @@ public class AddSpecies extends HttpServlet {
         try {
 
             // 插入到 species 表
-            String insertSpeciesSql = "INSERT INTO species (species_name, species_othername, species_morph, species_tech, species_appl) " +
-                    "VALUES (?, ?, ?, ?, ?)";
+            String insertSpeciesSql = "INSERT INTO species (species_name, species_othername, species_morph, species_tech, species_appl, species_environment) " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
             System.out.println(insertSpeciesSql);
             PreparedStatement speciesStatement = connection.prepareStatement(insertSpeciesSql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -51,7 +48,7 @@ public class AddSpecies extends HttpServlet {
             speciesStatement.setString(3, morphology);
             speciesStatement.setString(4, cultivation);
             speciesStatement.setString(5, application);
-
+            speciesStatement.setString(6,environment);
             // 执行插入
             speciesStatement.executeUpdate();
 
@@ -96,6 +93,32 @@ public class AddSpecies extends HttpServlet {
 
             // 关闭 genus_species 表的声明
             genusSpeciesStatement.close();
+
+            //获取插入的province_id
+            // 执行查询语句
+            String query = "SELECT province_id FROM province WHERE province_name = ?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1,province);
+            ResultSet resultSet = ps.executeQuery();
+
+            int provinceId = 0;
+            if (resultSet.next()) {
+                // 获取查询结果中的province_id
+                provinceId = resultSet.getInt("province_id");
+            }
+
+
+            // 插入到 province_species表
+            String insertProvinceSpeciesSql = "INSERT INTO province_species (province_id, species_id) VALUES (?, ?)";
+            System.out.println(insertProvinceSpeciesSql);
+            PreparedStatement provinceSpeciesStatement = connection.prepareStatement(insertProvinceSpeciesSql);
+            provinceSpeciesStatement.setInt(1, provinceId);
+            provinceSpeciesStatement.setInt(2, speciesId);
+            // 执行插入
+            provinceSpeciesStatement.executeUpdate();
+            // 关闭 genus_species 表的声明
+            provinceSpeciesStatement.close();
+
 
             // 插入到 family 表
             String insertFamilySql = "INSERT INTO family (family_name) VALUES (?)";

@@ -41,6 +41,11 @@ public class DeleteSpecies extends HttpServlet {
             // 删除与species相关的picture记录
             deletePictureRecords(conn, speciesId);
 
+            // 删除province_species表中的相关记录
+            deleteRecord(conn, "province_species", "species_id", speciesId);
+            // 删除province表中的相关记录
+            deleteRecord(conn, "province", "province_id", "SELECT province_id FROM province_species WHERE species_id = ?", speciesId);
+
             // 删除genus_species表中的相关记录
             deleteRecord(conn, "genus_species", "species_id", speciesId);
 
