@@ -31,7 +31,7 @@ public class PictureDao {
 
                 PictureBean pictureBean = new PictureBean();
                 pictureBean.setPicture_content(rs.getBlob("picture_content"));
-                pictureBean.setPicture_discri(rs.getString("picture_discri"));
+                pictureBean.setPicture_discri(rs.getString("picture_descri"));
                 pictureBean.setPhototedby(rs.getString("photoedby"));
                 pictureBean.setPicture_id(rs.getInt("picture_id"));
                 tag_Array.add(pictureBean);
