@@ -12,6 +12,9 @@ public class ConserveBean {
     Date con_utime;//更新时间
     Date con_ctime; //创建时间
 
+    private String species_name;
+
+
     public int getCon_id() {
         return con_id;
     }
@@ -72,5 +75,13 @@ public class ConserveBean {
 
     public void setCreatedby(String createdby) {
         this.createdby = createdby;
+    }
+
+    public String getSpecies_name() {
+        return species_name;
+    }
+
+    public void setSpecies_name(String species_name) {
+        this.species_name = species_name;
     }
 }

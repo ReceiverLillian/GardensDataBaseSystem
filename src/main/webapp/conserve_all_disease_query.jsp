@@ -1,6 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%--<%@ page--%>
 <%--	import="com.bean.AdminBean,com.dao.AdminDao"%>--%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -10,7 +10,6 @@
     <title>园林植物综合管理平台</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
@@ -49,7 +48,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="collapse navbar-collapse main-navbar-collapse">
-                    <a class="navbar-brand" href="/gardens/login.jsp"><strong>园林植物监测管理</strong></a>
+                    <a class="navbar-brand" href="/gardens/login.jsp"><strong>园林植物养护管理</strong></a>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown  text-white"><a href="#" role="button"
                                                             class="dropdown-toggle" data-hover="dropdown"> <i
@@ -71,32 +70,27 @@
         <!-- left, vertical navbar -->
         <div class="col-md-2 bootstrap-admin-col-left">
             <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                <li><a href="/gardens/monitorAllPlants"><i
-                        class="glyphicon glyphicon-chevron-right"></i> 监测管理</a></li>
-                <li><a href="/gardens/monitorAddPlant"><i
-                        class="glyphicon glyphicon-chevron-right"></i> 增加监测</a></li>
-                <li><a href="/gardens/monitor_add_batchplant.jsp"><i
-                        class="glyphicon glyphicon-chevron-right"></i> 批量增加监测</a></li>
-                <li><a href="/gardens/monitorQuotaAnalysis"><i
-                        class="glyphicon glyphicon-chevron-right"></i> 指标分析</a></li>
-                <li><a href="/gardens/monitorQuotaError"><i
-                        class="glyphicon glyphicon-chevron-right"></i> 异常指标</a></li>
+                <li><a href="/gardens/conserveAllPlants"><i
+                        class="glyphicon glyphicon-chevron-right"></i> 养护管理</a></li>
+                <li><a href="/gardens/conserveAddPlant"><i
+                        class="glyphicon glyphicon-chevron-right"></i> 增加养护</a></li>
+                <li><a href="/gardens/conserveAllDisease"><i
+                        class="glyphicon glyphicon-chevron-right"></i> 病虫害管理</a></li>
+                <li><a href="/gardens/conserveAddDisease"><i
+                        class="glyphicon glyphicon-chevron-right"></i> 增加病虫害</a></li>
             </ul><br><br>
-
         </div>
-
-        <!-- content -->
         <div class="col-md-10">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">监测管理-搜索结果</div>
+                            <div class="text-muted bootstrap-admin-box-title">病虫害管理-搜索结果</div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
-                            <form method="post" action="/gardens/monitorAllPlantQuery" class="form-inline"  id="searchform">
+                            <form method="post" action="/gardens/conserveAllDiseaseQuery" class="form-inline"  id="searchform">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="searchWord" placeholder="搜索植物学名/监测人/创建人...">
+                                    <input type="text" class="form-control" name="searchWord" placeholder="搜索植物学名/病名/药名...">
                                 </div>
                                 <button type="submit" class="btn btn-default">搜索</button>
                             </form>
@@ -105,51 +99,45 @@
                             <table class="table table-hover" >
                                 <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>创建人</th>
-                                    <th>监测人</th>
-                                    <th>监测地点</th>
-                                    <th>监测时间</th>
-                                    <th>监测设备</th>
-                                    <th>监测指标</th>
-                                    <th>监测值</th>
-                                    <th>监测对象</th>
+                                    <th>病名</th>
+                                    <th>药名</th>
+                                    <th>药剂用量</th>
+                                    <th>防治方法</th>
+                                    <th>作用期限</th>
+                                    <th>创建时间</th>
+                                    <th>更新时间</th>
+                                    <th>养护对象</th>
 
                                     <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${monitorBeans}" var="monitorBeans" varStatus="status">
+                                <c:forEach items="${diseaseMedBeans}" var="diseaseMedBeans" varStatus="status">
                                     <tr>
-                                        <td><c:out value="${monitorBeans.mon_id}"></c:out></td>
-                                        <td><c:out value="${monitorBeans.createdby}"></c:out></td>
-                                        <td><c:out value="${monitorBeans.monby}"></c:out></td>
-                                        <td><c:out value="${monitorBeans.mon_place}"></c:out></td>
+                                        <td><c:out value="${diseaseMedBeans.dis_name}"></c:out></td>
+                                        <td><c:out value="${diseaseMedBeans.med_name}"></c:out></td>
+                                        <td><c:out value="${diseaseMedBeans.dis_mednum}"></c:out></td>
+                                        <td><c:out value="${diseaseBeans[status.index].dis_tech}"></c:out></td>
                                         <td>
-                                            <fmt:formatDate value="${monitorBeans.mon_time}" pattern="yyyy-MM-dd" />
+                                            <fmt:formatDate value="${diseaseMedBeans.dis_ddl}" pattern="yyyy-MM-dd" />
                                         </td>
                                         <td>
-                                            <c:out value="${deviceBeans[status.index].dev_name}"></c:out>
+                                            <fmt:formatDate value="${diseaseMedBeans.dis_ctime}" pattern="yyyy-MM-dd" />
                                         </td>
                                         <td>
-                                            <c:out value="${quotaBeans[status.index].quo_name}"></c:out>
-                                        </td>
-                                        <td>
-                                            <c:out value="${quotaBeans[status.index].quo_value}"></c:out>
+                                            <fmt:formatDate value="${diseaseMedBeans.dis_utime}" pattern="yyyy-MM-dd" />
                                         </td>
                                         <td>
                                             <c:out value="${speciesBeans[status.index].species_name}"></c:out>
                                         </td>
 
 
+
                                         <td>
-                                            <a href="/gardens/monitorAllPlantInfo?mon_id=${monitorBeans.mon_id}&dev_id=${deviceBeans[status.index].dev_id}&quo_id=${quotaBeans[status.index].quo_id}&species_id=${speciesBeans[status.index].species_id}">
-                                                <button type="button" class="btn btn-primary btn-xs">详情</button>
-                                            </a>
-                                            <a href="/gardens/monitorAllPlantUpdate?mon_id=${monitorBeans.mon_id}&dev_id=${deviceBeans[status.index].dev_id}&quo_id=${quotaBeans[status.index].quo_id}&species_id=${speciesBeans[status.index].species_id}">
+                                            <a href="/gardens/conserveAllDiseaseUpdate?dis_id=${diseaseMedBeans.dis_id}&med_id=${diseaseMedBeans.med_id}&species_id=${speciesBeans[status.index].species_id}">
                                                 <button type="button" class="btn btn-info btn-xs">修改</button>
                                             </a>
-                                            <a href="/gardens/monitorAllPlantDelete?mon_id=${monitorBeans.mon_id}&dev_id=${deviceBeans[status.index].dev_id}&quo_id=${quotaBeans[status.index].quo_id}&species_id=${speciesBeans[status.index].species_id}">
+                                            <a href="/gardens/conserveAllDiseaseDelete?dis_id=${diseaseMedBeans.dis_id}&med_id=${diseaseMedBeans.med_id}&species_id=${speciesBeans[status.index].species_id}">
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </a>
                                         </td>
@@ -158,16 +146,16 @@
                                 </tbody>
                             </table>
                             <div class="form-group">
-                                <a href="/gardens/monitorAllPlants"><button type="button" class="btn btn-info btn-xs">返回</button></a>
+                                <a href="/gardens/conserveAllDisease"><button type="button" class="btn btn-info btn-xs">返回</button></a>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 </div>
 
 

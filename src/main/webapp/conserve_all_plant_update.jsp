@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%--<%@ page--%>
 <%--	import="com.bean.AdminBean,com.dao.AdminDao"%>--%>
@@ -41,6 +41,7 @@
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
+
 <nav
         class="navbar navbar-light bg-primary navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small  navbar-custom"
         role="navigation">
@@ -79,73 +80,85 @@
                 <li><a href="/gardens/conserveAddDisease"><i
                         class="glyphicon glyphicon-chevron-right"></i> 增加病虫害</a></li>
             </ul><br><br>
+
         </div>
+
         <div class="col-md-10">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">养护管理</div>
+                            <div class="text-muted bootstrap-admin-box-title">养护管理-修改信息</div>
                         </div>
+                        <form action="/gardens/conserveAllPlantUpdateDo" method="post">
                         <div class="bootstrap-admin-panel-content">
-                            <form method="post" action="/gardens/conserveAllPlantQuery" class="form-inline"  id="searchform">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="searchWord" placeholder="搜索植物学名/养护人/创建人...">
-                                </div>
-                                <button type="submit" class="btn btn-default">搜索</button>
-                            </form>
+
+
                             <div class="form-group">
+                                <label>创建人</label>
+                                <input type="text" class="form-control" name="createdby" id="createdby" value="${conserveBean.createdby}" required>
                             </div>
-                            <table class="table table-hover" >
-                                <thead>
-                                <tr>
-                                    <th>养护编号</th>
-                                    <th>养护名称</th>
-                                    <th>创建人</th>
-                                    <th>养护人</th>
-                                    <th>养护地点</th>
-                                    <th>养护创建时间</th>
-                                    <th>养护更新时间</th>
-                                    <th>养护对象</th>
-                                    <th>养护描述</th>
 
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${conserveBeans}" var="conserveBeans" varStatus="status">
-                                    <tr>
-                                        <td><c:out value="${conserveBeans.con_id}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.con_name}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.createdby}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.conby}"></c:out></td>
-                                        <td><c:out value="${conserveBeans.con_place}"></c:out></td>
-                                        <td>
-                                            <fmt:formatDate value="${conserveBeans.con_ctime}" pattern="yyyy-MM-dd" />
-                                        </td>
-                                        <td>
-                                            <fmt:formatDate value="${conserveBeans.con_utime}" pattern="yyyy-MM-dd" />
-                                        </td>
-                                        <td>
-                                            <c:out value="${speciesBeans[status.index].species_name}"></c:out>
-                                        </td>
-                                        <td><c:out value="${conserveBeans.con_desc}"></c:out></td>
+                            <div class="form-group">
+                                <label>养护人</label>
+                                <input type="text" class="form-control" name="conby" id="conby" value="${conserveBean.conby}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>养护地点</label>
+                                <input type="text" class="form-control" name="con_place" id="con_place" value="${conserveBean.con_place}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>养护名称</label>
+                                <input type="text" class="form-control" name="con_name" id="con_name" value="${conserveBean.con_name}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>养护描述</label>
+                                <input type="text" class="form-control" name="con_desc" id="con_desc" value="${conserveBean.con_desc}" required>
+                            </div>
 
 
-                                        <td>
-                                            <a href="/gardens/conserveAllPlantUpdate?con_id=${conserveBeans.con_id}&species_id=${speciesBeans[status.index].species_id}">
-                                                <button type="button" class="btn btn-info btn-xs">修改</button>
-                                            </a>
-                                            <a href="/gardens/conserveAllPlantDelete?con_id=${conserveBeans.con_id}&species_id=${speciesBeans[status.index].species_id}">
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                            <div class="form-group">
+                                <label>养护创建时间</label>
+                                <fmt:formatDate value="${conserveBean.con_ctime}" pattern="yyyy-MM-dd" var="con_ctime"/>
+                                <input type="date" class="form-control" name="con_ctime" id="con_ctime" value="${con_ctime}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label>养护更新时间</label>
+                                <fmt:formatDate value="${conserveBean.con_utime}" pattern="yyyy-MM-dd" var="con_utime"/>
+                                <input type="date" class="form-control" name="con_utime" id="con_utime" value="${con_utime}" readonly>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>养护对象</label>
+                                <select class="form-control" name="species_id" id="species_name" required> <!-- 注意这里的 name 改为 species_id -->
+                                    <c:forEach items="${speciesBeans}" var="species">
+                                        <c:choose>
+                                            <c:when test="${species.species_name == speciesBean.species_name}">
+                                                <!-- 使用 species_id 作为 value -->
+                                                <option value="${species.species_id}" selected="selected">${species.species_name}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <!-- 使用 species_id 作为 value -->
+                                                <option value="${species.species_id}">${species.species_name}</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <a href="/gardens/conserveAllPlants"><button type="button" class="btn btn-info btn-xs">返回</button></a>
+                                <button type="submit" class="btn btn-success btn-xs">提交</button>
+                            </div>
 
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

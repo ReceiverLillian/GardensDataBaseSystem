@@ -11,6 +11,8 @@ public class MonitorBean {
     private Date mon_utime;
     private Date mon_ctime;
     private int mon_target;
+    private String species_name;
+    private String species_othername;
 
     public int getMon_id() {
         return mon_id;
@@ -74,5 +76,21 @@ public class MonitorBean {
 
     public void setMon_target(int mon_target) {
         this.mon_target = mon_target;
+    }
+
+    public String getSpecies_name() {
+        return species_name;
+    }
+
+    public void setSpecies_name(String species_name) {
+        this.species_name = species_name;
+    }
+
+    public String getSpecies_othername() {
+        return species_othername;
+    }
+
+    public void setSpecies_othername(String species_othername) {
+        this.species_othername = species_othername;
     }
 }

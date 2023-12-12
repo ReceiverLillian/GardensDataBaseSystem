@@ -1,5 +1,6 @@
 package dao;
 
+import bean.DeviceBean;
 import bean.DiseaseBean;
 import util.DBUtil;
 
@@ -76,5 +77,68 @@ public class DiseaseDao {
             DBUtil.CloseDB(rs, stm, conn);
         }
         return diseaseBean;
+    }
+
+    public DiseaseBean selectDiseaseById(int id){
+        Connection conn = DBUtil.getConnectDb();
+        String sql = "select * from disease where dis_id = ?";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        DiseaseBean diseaseBean = new DiseaseBean();
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, id);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                diseaseBean.setDis_id(rs.getInt("dis_id"));
+                diseaseBean.setDis_name(rs.getString("dis_name"));
+                diseaseBean.setDis_tech(rs.getString("dis_tech"));
+                diseaseBean.setDis_ddl(rs.getString("dis_ddl"));
+                diseaseBean.setCreatedby(rs.getString("createdby"));
+                diseaseBean.setCreatedtime(rs.getDate("createdtime"));
+                diseaseBean.setUpdatetime(rs.getDate("updatetime"));
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+        return diseaseBean;
+    }
+
+    public ArrayList<DiseaseBean> selectAllDisease(){
+        Connection conn = DBUtil.getConnectDb();
+        String sql = "select * from disease ";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        ArrayList<DiseaseBean> diseaseBeans = new ArrayList<>();
+
+        try {
+            stm = conn.prepareStatement(sql);
+
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                DiseaseBean diseaseBean = new DiseaseBean();
+                diseaseBean.setDis_id(rs.getInt("dis_id"));
+                diseaseBean.setDis_name(rs.getString("dis_name"));
+                diseaseBean.setDis_tech(rs.getString("dis_tech"));
+                diseaseBean.setDis_ddl(rs.getString("dis_ddl"));
+                diseaseBean.setCreatedby(rs.getString("createdby"));
+                diseaseBean.setCreatedtime(rs.getDate("createdtime"));
+                diseaseBean.setUpdatetime(rs.getDate("updatetime"));
+                diseaseBeans.add(diseaseBean);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+
+        return diseaseBeans;
     }
 }

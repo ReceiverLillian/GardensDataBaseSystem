@@ -59,7 +59,7 @@ public class MonitorAllPlantUpdateDo extends HttpServlet{
             response.sendRedirect("/gardens/monitorAllPlants?feedbackmessage="+URLEncoder.encode("更新成功", "UTF-8"));
         }
         else{
-            response.sendRedirect("/gardens/monitorAllPlantUpdate?feedbackmessage="+ URLEncoder.encode("更新失败", "UTF-8"));
+            response.sendRedirect("/gardens/monitorAllPlants?feedbackmessage="+ URLEncoder.encode("更新失败", "UTF-8"));
         }
 
     }

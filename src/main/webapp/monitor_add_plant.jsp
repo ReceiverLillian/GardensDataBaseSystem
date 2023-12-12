@@ -98,22 +98,22 @@
 
                                 <div class="form-group">
                                     <label>创建人</label>
-                                    <input type="text" class="form-control" name="createdby" id="createdby" value="${monitorBean.createdby}" required>
+                                    <input type="text" class="form-control" name="createdby" id="createdby"  required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>监测人</label>
-                                    <input type="text" class="form-control" name="monby" id="monby" value="${monitorBean.monby}" required>
+                                    <input type="text" class="form-control" name="monby" id="monby"  required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>监测地点</label>
-                                    <input type="text" class="form-control" name="mon_place" id="mon_place" value="${monitorBean.mon_place}" required>
+                                    <input type="text" class="form-control" name="mon_place" id="mon_place"  required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>监测时间</label>
-                                    <input type="date" class="form-control" name="mon_time" id="mon_time" value="${mon_time}" required>
+                                    <input type="date" class="form-control" name="mon_time" id="mon_time"  required>
                                 </div>
 
 

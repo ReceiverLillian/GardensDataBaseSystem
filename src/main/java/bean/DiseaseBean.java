@@ -85,5 +85,4 @@ public class DiseaseBean {
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
     }
-
 }
