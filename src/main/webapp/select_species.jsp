@@ -6,7 +6,7 @@
 <html lang="zh-CN" class="ax-vertical-centered">
 <head>
 <meta charset="UTF-8">
-<title>园林植物综合管理平台</title>
+<title>select_species</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="static/css/bootstrap.min.css">
@@ -37,7 +37,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="collapse navbar-collapse main-navbar-collapse">
-						<a class="navbar-brand" href="superior_main.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
+						<a class="navbar-brand" href="admin_main.jsp"><strong>欢迎使用园林植物综合管理平台</strong></a>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="#" role="button"
 								class="dropdown-toggle" data-hover="dropdown"> <i
@@ -57,20 +57,13 @@
 			<!-- left, vertical navbar -->
 			<div class="col-md-2 bootstrap-admin-col-left">
 				<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-					<li><a href="/gardens/SuperiorShowConserveServlet"><i
-							class="glyphicon glyphicon-chevron-right"></i> 养护信息</a></li>
-					<li><a href="/gardens/SuperiorShowMonitorServlet"><i
-							class="glyphicon glyphicon-chevron-right"></i> 监测信息</a></li>
-					<li><a href="/gardens/SuperiorShowDiseaseServlet"><i
-							class="glyphicon glyphicon-chevron-right"></i> 病虫害信息</a></li>
-					<li><a href="/gardens/SuperiorConPeopleServlet"><i
-							class="glyphicon glyphicon-chevron-right"></i> 养护人员</a></li>
-					<li><a href="/gardens/SuperiorMonPeopleServlet"><i
-							class="glyphicon glyphicon-chevron-right"></i> 监测人员</a></li>
-					<li><a href="/gardens/SuperiorShowPlantsServlet"><i
-							class="glyphicon glyphicon-chevron-right"></i> 植物信息</a></li>
-					<li><a href="/gardens/SuperiorShowTypesServlet"><i
-							class="glyphicon glyphicon-chevron-right"></i> 类别信息</a></li>
+					<li><a href="/gardens/basicMessageManagement"><i
+							class="glyphicon glyphicon-chevron-right"></i> 植物基本信息管理</a></li>
+					<li><a href="/gardens/sortManagement"><i
+							class="glyphicon glyphicon-chevron-right"></i> 植物分类管理</a></li>
+
+					<%--<li><a href="/gardens/AdminSelectPlants"><i
+							class="glyphicon glyphicon-chevron-right"></i> 查询植物</a></li>--%>
 
 				</ul><br><br>
 
@@ -85,7 +78,7 @@
         								<div class="text-muted bootstrap-admin-box-title">植物信息</div>
         							</div>
                                 <div>
-                                        <form class="form-horizontal" action="/gardens/SuperiorSelectServlet"
+                                        <form class="form-horizontal" action="/gardens/AdminSelectServlet"
                                             method="post">
                                              <div class="col-lg-7 form-group">
                                                 <label class="col-lg-4 control-label" for="query_name">植物信息</label>
@@ -101,7 +94,7 @@
  <!--------------------植物信息模糊查询↑   根据科属及其组合查询↓   ---------------------->
                                         </form>
 
-                                        <form class="form-horizontal" action="/gardens/SuperiorSelectByTypeServlet"
+                                        <form class="form-horizontal" action="/gardens/AdminSelectByTypeServlet"
                                             method="post">
                                             <div class="col-lg-7 form-group">
                                                <label class="col-lg-4 control-label" for="query_name">科属信息</label>
@@ -151,7 +144,7 @@
         						</div>
         					</div>
 
-        				<div class="row">
+        				<%--<div class="row">
         					<div class="col-lg-12">
         						<table id="data_list" class="table table-hover table-bordered"
         							cellspacing="0" width="100%">
@@ -192,7 +185,7 @@
 
         						</table>
         					</div>
-        				</div>
+        				</div>--%>
         			</div>
         		</div>
     </div>

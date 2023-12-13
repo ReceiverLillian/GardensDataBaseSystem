@@ -69,6 +69,8 @@ body {
 					<li><a href="/gardens/sortManagement"><i
 							class="glyphicon glyphicon-chevron-right"></i> 植物分类管理</a></li>
 
+					<%--<li><a href="/gardens/AdminSelectPlants"><i
+							class="glyphicon glyphicon-chevron-right"></i> 查询植物</a></li>--%>
 				</ul><br><br>
 
 			</div>
@@ -79,11 +81,11 @@ body {
 					<div class="col-md-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">养护要求</div>
+								<div class="text-muted bootstrap-admin-box-title">植物基本信息管理</div>
 							</div>
 							<div class="bootstrap-admin-panel-content">
 								<ul>
-									<li>养护人员可以在登录系统后，查询养护要求；</li>
+									<li>您是管理员，可以对植物信息进行增删改查等基本操作</li>
 
 								</ul>
 							</div>
@@ -92,11 +94,11 @@ body {
 					<div class="col-md-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<div class="text-muted bootstrap-admin-box-title">进行养护</div>
+								<div class="text-muted bootstrap-admin-box-title">植物分类信息</div>
 							</div>
 							<div class="bootstrap-admin-panel-content">
 								<ul>
-									<li>养护人员根据养护要求对园林植物进行定期养护</li>
+									<li>您是管理员，可以依据分类信息进行增删改查</li>
 
 								</ul>
 							</div>
