@@ -32,7 +32,7 @@
             color: white !important; /* 使用 !important 来确保覆盖其他样式 */
         }
         /* 额外添加针对欢迎语的样式 */
-        .navbar-custom .navbar-nav .dropdown a {
+        .navbar-custom .navbar-nav a {
             color: white !important;
         }
     </style>
@@ -56,6 +56,7 @@
                                 class="glyphicon glyphicon-user "></i> 欢迎您，${user.user_name}
                         </a>
                         </li>
+                        <li><a href="/gardens/LogoutServlet"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a></li>
                     </ul>
                 </div>
             </div>

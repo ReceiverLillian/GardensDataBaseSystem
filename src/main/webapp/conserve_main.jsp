@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%--<%@ page--%>
 <%--	import="com.bean.AdminBean,com.dao.AdminDao"%>--%>
@@ -29,7 +30,7 @@
 			color: white !important; /* 使用 !important 来确保覆盖其他样式 */
 		}
 		/* 额外添加针对欢迎语的样式 */
-		.navbar-custom .navbar-nav .dropdown a {
+		.navbar-custom .navbar-nav a {
 			color: white !important;
 		}
 	</style>
@@ -39,7 +40,11 @@
 <script src="static/js/bootstrap.min.js"></script>
 
 <body class="bootstrap-admin-with-small-navbar">
-
+<c:if test="${empty user}">
+	<script>
+		window.location.href = "login.html";
+	</script>
+</c:if>
 <nav
 		class="navbar navbar-light bg-primary navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small  navbar-custom"
 		role="navigation">
@@ -54,6 +59,7 @@
 								class="glyphicon glyphicon-user "></i> 欢迎您，${user.user_name}
 						</a>
 						</li>
+						<li><a href="/gardens/LogoutServlet"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a></li>
 					</ul>
 				</div>
 			</div>
