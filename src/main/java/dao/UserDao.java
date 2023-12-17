@@ -15,14 +15,24 @@ public class UserDao {
         // TODO Auto-generated method stub
         UserBean userBean = null;
         Connection conn = DBUtil.getConnectDb();
-        String sql = "select * from user where user_name= '"+username+"' and password= '"+password+"'";
+
 
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareStatement(sql);
+            String updateSql = " UPDATE user SET password = SHA1(?) WHERE user_name = ? AND password = SHA1(?)";
+            stm = conn.prepareStatement(updateSql);
+            stm.setString(1, password);
+            stm.setString(2, username);
+            stm.setString(3, password);
+            stm.executeUpdate();
+
+            String checkSql = "SELECT * FROM user WHERE user_name = ?";
+            stm = conn.prepareStatement(checkSql);
+            stm.setString(1, username);
             rs = stm.executeQuery();
-            if (rs.next()) {
+
+            if (rs.next() && "login".equals(rs.getString("user_state"))) {
                 userBean = new UserBean();
                 userBean.setUser_id(rs.getInt("user_id"));
                 userBean.setUser_name(rs.getString("user_name"));
@@ -95,5 +105,30 @@ public class UserDao {
             DBUtil.CloseDB(rs, stm, conn);
         }
         return tag_Array;
+    }
+
+    public boolean updateUser_state(UserBean userBean){
+        Connection conn = DBUtil.getConnectDb();
+        String sql = "UPDATE user SET user_state = ? WHERE user_id=?";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        boolean updateResult = false;
+
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, "logout");
+            stm.setInt(2, userBean.getUser_id());
+
+            int rowsUpdated = stm.executeUpdate();
+            updateResult = rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            DBUtil.CloseDB(rs, stm, conn);
+        }
+        return updateResult;
     }
 }
